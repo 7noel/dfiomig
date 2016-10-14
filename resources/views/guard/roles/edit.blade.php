@@ -6,21 +6,21 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading panel-heading-custom">{{ config('options.' . Request::route()->getAction()['as'] .'.panel') . $model->name }}</div>
+				<div class="panel-heading panel-heading-custom">{{ config($labels['edit'] .'.panel') . $model->name }}</div>
 
 				<div class="panel-body">
 					@include('partials.messages')
 
-					{!! Form::model($model, ['route'=>[ str_replace('edit', 'update', Request::route()->getAction()['as']) , $model], 'method'=>'PUT', 'class'=>'form-horizontal', 'enctype'=>"multipart/form-data"]) !!}
+					{!! Form::model($model, ['route'=>[ $routes['update'] , $model], 'method'=>'PUT', 'class'=>'form-horizontal', 'enctype'=>"multipart/form-data"]) !!}
 
 					@if(Request::url() != URL::previous())
 					<input type="hidden" name="last_page" value="{{ URL::previous() }}">
 					@endif
 					
-					@include( str_replace('edit', 'partials.fields', Request::route()->getAction()['as']) )
+					@include( $views['fields'] )
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" id="submit-role" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> {{ config('options.' . Request::route()->getAction()['as'] .'.update') }}</button>
+							<button type="submit" id="submit-role" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> {{ config($labels['edit'] .'.update') }}</button>
 						</div>
 					</div>
 					{!! Form::close() !!}
@@ -34,6 +34,6 @@
 
 @section('scripts')
 
-@include( str_replace('edit', 'scripts', Request::route()->getAction()['as']) )
+@include( $views['scripts'] )
 
 @endsection

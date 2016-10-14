@@ -29,7 +29,7 @@ class RolesController extends Controller {
 	{
 		$groups = $this->permissionGroupRepo->all();
 		$permissions = $this->permissionRepo->all();
-		return view('guard.roles.edit',compact('permissions' ,'groups'));
+		return view('guard.roles.create',compact('permissions' ,'groups'));
 	}
 
 	public function store()

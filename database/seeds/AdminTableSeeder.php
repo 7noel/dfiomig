@@ -39,7 +39,7 @@ class AdminTableSeeder extends Seeder {
             'is_superuser' => true
         ]);
         Role::create(['name' => 'ADMINISTRADOR DE SISTEMA']);
-        Role::create(['name' => 'JEFE DE ALMACEN']);
+        /*Role::create(['name' => 'JEFE DE ALMACEN']);
         Role::create(['name' => 'ASISTENTE DE ALMACEN']);
         Role::create(['name' => 'JEFE DE COMPRAS']);
         Role::create(['name' => 'ASISTENTE DE ADV']);
@@ -55,7 +55,7 @@ class AdminTableSeeder extends Seeder {
         Job::create(['name' => 'JEFE DE TALLER']);
         Job::create(['name' => 'ASESOR DE SERVICIO']);
         Job::create(['name' => 'COORDINADOR DE POSTVENTA']);
-        Job::create(['name' => 'JEFE DE POSTVENTA']);
+        Job::create(['name' => 'JEFE DE POSTVENTA']);*/
 
         PermissionGroup::create(['name' => 'SISTEMAS']);
         PermissionGroup::create(['name' => 'ALMACEN']);

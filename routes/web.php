@@ -55,7 +55,11 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'permissions'], 'namespa
 	Route::resource('currencies','CurrenciesController');
 	Route::resource('document_types','DocumentTypesController');
 });
-
+Route::group(['prefix'=>'finances', 'middleware'=>['auth', 'permissions'], 'namespace'=>'Finances'], function(){
+	Route::resource('exchanges','ExchangesController');
+	Route::resource('companies','CompaniesController');
+	Route::resource('payment_conditions','PaymentConditionsController');
+});
 Route::group(['prefix'=>'guard', 'middleware'=>['auth', 'permissions'], 'namespace'=>'Security'], function(){
 	Route::get('change_password', ['as' => 'change_password', 'uses' => 'UsersController@changePassword']);
 	Route::post('update_password', ['as'=>'update_password', 'uses'=>'UsersController@updatePassword']);

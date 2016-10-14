@@ -18,7 +18,7 @@
 								<td>{{ $model->sales }}</td>
 								<td>{{ $model->purchase }}</td>
 								<td>
-									<a href="{{ $routes['edit'] , $model) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar</a>
+									<a href="{{ route($routes['edit'] , $model) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar</a>
 									<a href="#" class="btn-delete btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar</a>
 								</td>
 							</tr>

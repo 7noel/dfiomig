@@ -35,6 +35,13 @@ abstract class BaseRepo{
 	{
 		return $list = [""=>'Seleccionar'] + $this->model->pluck($name, $id)->toArray();
 	}
+	public function getListGroup($group, $name='name', $id='id')
+	{
+		foreach ($this->model->with($group)->get() as $key => $u) {
+			$r[$u->$group->name][$u->id] = $u->name;
+		}
+		return [''=>'Seleccionar'] + $r;
+	}
 	public function all_with_deleted()
 	{
 		return $this->model->withTrashed()->get();

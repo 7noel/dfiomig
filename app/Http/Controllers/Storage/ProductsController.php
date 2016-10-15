@@ -40,10 +40,11 @@ class ProductsController extends Controller {
 
 	public function create()
 	{
-		$categories = $this->categoryRepo->getList();
-		$unit_types = $this->unitTypeRepo->getList();
+		$sub_categories = $this->subCategoryRepo->getListGroup('category');
+		$units = $this->unitRepo->getListGroup('unit_type');
 		$currencies = $this->currencyRepo->getList('symbol');
-		return view('partials.create', compact('categories', 'unit_types', 'currencies'));
+		
+		return view('partials.create', compact('sub_categories', 'units', 'currencies'));
 	}
 
 	public function store(FormProductRequest $request)
@@ -60,13 +61,10 @@ class ProductsController extends Controller {
 	public function edit($id)
 	{
 		$model = $this->repo->findOrFail($id);
-		$categories = $this->categoryRepo->getList();
-		$unit_types = $this->unitTypeRepo->getList();
 		$currencies = $this->currencyRepo->getList('symbol');
-
-		$sub_categories = $this->subCategoryRepo->getList2($model->sub_category->category_id);
-		$units = $this->unitRepo->getList2($model->unit->unit_type_id);
-		return view('partials.edit', compact('model', 'sub_categories', 'units', 'categories', 'unit_types', 'currencies'));
+		$sub_categories = $this->subCategoryRepo->getListGroup('category');
+		$units = $this->unitRepo->getListGroup('unit_type');
+		return view('partials.edit', compact('model', 'sub_categories', 'units', 'currencies'));
 	}
 
 	public function update($id, FormProductRequest $request)

@@ -1,5 +1,7 @@
 <?php namespace App\Modules\Security;
 
+
+use OwenIt\Auditing\Auditable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -9,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
+	use Auditable;
 	use Authenticatable, CanResetPassword, SoftDeletes;
 
 	/**

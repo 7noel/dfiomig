@@ -75,6 +75,9 @@ Route::group(['prefix'=>'storage', 'middleware'=>['auth', 'permissions'], 'names
 	Route::resource('categories','CategoriesController');
 	Route::resource('sub_categories','SubCategoriesController');
 	Route::resource('products','ProductsController');
+	Route::resource('basic_designs','BasicDesignsController');
+	Route::resource('size_types','SizeTypesController');
+	Route::resource('sizes','SizesController');
 });
 
 Route::group(['prefix'=>'humanresources', 'middleware'=>['auth', 'permissions'], 'namespace'=>'HumanResources'], function(){

@@ -201,6 +201,25 @@ return array(
 			'show'   => ['panel'=>'Vizualizando Producto:'],
 			'edit'   => ['panel'=>'Editar Producto: ', 'update'=>'Actualizar Producto', 'delete'=>'Eliminar Producto']
 		],
+		'basic_designs' => [
+			'index'  => ['panel'=>'Diseños Básicos', 'create'=>'Crear Diseño Básico'],
+			'create' => ['panel'=>'Nuevo Diseño Básico', 'create'=>'Crear Diseño Básico'],
+			'show'   => ['panel'=>'Vizualizando Diseño Básico:'],
+			'edit'   => ['panel'=>'Editar Diseño Básico: ', 'update'=>'Actualizar Diseño Básico', 'delete'=>'Eliminar Diseño Básico']
+		],
+		'sizes' => [
+			'index'  => ['panel'=>'Tallas', 'create'=>'Crear Talla'],
+			'create' => ['panel'=>'Nueva Talla', 'create'=>'Crear Talla'],
+			'show'   => ['panel'=>'Vizualizando Talla:'],
+			'edit'   => ['panel'=>'Editar Talla: ', 'update'=>'Actualizar Talla', 'delete'=>'Eliminar Talla']
+		],
+		'size_types' => [
+			'index'  => ['panel'=>'Tipos de Talla', 'create'=>'Crear Tipo de Talla'],
+			'create' => ['panel'=>'Nuevo Tipo de Talla', 'create'=>'Crear Tipo de Talla'],
+			'show'   => ['panel'=>'Vizualizando Tipo de Talla:'],
+			'edit'   => ['panel'=>'Editar Tipo de Talla: ', 'update'=>'Actualizar Tipo de Talla', 'delete'=>'Eliminar Tipo de Talla']
+		],
+
 	// ]
 
 );

@@ -1,10 +1,13 @@
 <?php namespace App\Modules\Storage;
 
+
+use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Stock extends Model {
 
+	USE Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['warehouse_id', 'product_id', 'stock', 'currency_id', 'avarege_value'];

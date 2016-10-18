@@ -1,13 +1,10 @@
 <?php namespace App\Modules\Storage;
 
-
-use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model {
+class SizeType extends Model {
 
-	USE Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['name', 'description'];
@@ -17,9 +14,8 @@ class Category extends Model {
 			$query->where('name', 'LIKE', "%$name%");
 		}
 	}
-	public function sub_categories()
+	public function units()
 	{
-		return $this->hasMany('App\Modules\Base\SubCategory');
+		return $this->hasMany('App\Modules\Storage\Size');
 	}
-
 }

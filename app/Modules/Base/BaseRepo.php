@@ -40,7 +40,12 @@ abstract class BaseRepo{
 		foreach ($this->model->with($group)->get() as $key => $u) {
 			$r[$u->$group->name][$u->id] = $u->name;
 		}
-		return [''=>'Seleccionar'] + $r;
+		if (isset($r)) {
+			return [''=>'Seleccionar'] + $r;
+		} else {
+			return [''=>'Seleccionar'];
+		}
+		
 	}
 	public function all_with_deleted()
 	{

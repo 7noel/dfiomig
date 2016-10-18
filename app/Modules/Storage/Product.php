@@ -1,10 +1,13 @@
 <?php namespace App\Modules\Storage;
 
+
+use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model {
 
+	USE Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['name', 'intern_code', 'provider_code', 'manufacturer_code', 'description', 'sub_category_id', 'unit_id', 'currency_id', 'last_purchase', 'profit_margin', 'price', 'set_price', 'use_set_price'];
@@ -29,5 +32,9 @@ class Product extends Model {
 	public function currency()
 	{
 		return $this->hasOne('App\Modules\Base\Currency','id','currency_id');
+	}
+	public function basic_design()
+	{
+		return $this->belongsTo('App\Modules\Storage\BasicDesign');
 	}
 }

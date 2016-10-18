@@ -54,12 +54,15 @@ class MenuController extends Controller
             'Almacén'=>[
                 ['name' => 'Vales de Ingreso y Salida', 'url' => '#' ],
                 ['name' => 'Aprobar Notas de Pedido', 'url' => '#' ],
+                ['name' => 'Diseños Básicos', 'route' => 'basic_designs.index' ],
                 ['name' => 'Productos', 'route' => 'products.index' ],
                 ['name' => 'Almacenes', 'route' => 'warehouses.index' ],
                 ['name' => 'Categorías', 'route' => 'categories.index', 'div' => '1' ],
                 ['name' => 'Sub Categorías', 'route' => 'sub_categories.index' ],
                 ['name' => 'Tipos de Unidad', 'route' => 'unit_types.index' ],
                 ['name' => 'Unidades', 'route' => 'units.index' ],
+                ['name' => 'Tipos de Talla', 'route' => 'size_types.index' ],
+                ['name' => 'Tallas', 'route' => 'sizes.index' ],
             ],
             'Recursos Humanos'=>[
                 ['name' => 'Empleados', 'route' => 'employees.index' ],

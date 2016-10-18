@@ -1,10 +1,13 @@
 <?php namespace App\Modules\Security;
 
+
+use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Permission extends Model {
 
+	use Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['name', 'action', 'description', 'permission_group_id'];

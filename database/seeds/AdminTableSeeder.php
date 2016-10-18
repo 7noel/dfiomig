@@ -9,6 +9,8 @@ use App\Modules\Security\PermissionGroup;
 use App\Modules\Base\IdType;
 use App\Modules\Base\UnitType;
 use App\Modules\Storage\Unit;
+use App\Modules\Storage\SizeType;
+use App\Modules\Storage\Size;
 use App\Modules\Base\Currency;
 use App\Modules\Finances\Exchange;
 use App\Modules\Storage\Category;
@@ -102,6 +104,7 @@ class AdminTableSeeder extends Seeder {
         UnitType::create(['name' => 'MASA']);
         UnitType::create(['name' => 'UNIDAD']);
 
+        Unit::create(['name' => 'UNIDAD', 'symbol' => 'und', 'unit_type_id' => 4, 'value' => 1]);
         Unit::create(['name' => 'CENTIMETRO', 'symbol' => 'cm', 'unit_type_id' => 1, 'value' => 1]);
         Unit::create(['name' => 'METRO', 'symbol' => 'mt', 'unit_type_id' => 1, 'value' => 100]);
         Unit::create(['name' => 'KILOMETRO', 'symbol' => 'km', 'unit_type_id' => 1, 'value' => 100000]);
@@ -120,38 +123,49 @@ class AdminTableSeeder extends Seeder {
         Unit::create(['name' => 'TONELADA', 'symbol' => 'ton', 'unit_type_id' => 3, 'value' => 1000000]);
         Unit::create(['name' => 'ONZA', 'symbol' => 'oz', 'unit_type_id' => 3, 'value' => 28.349]);
         Unit::create(['name' => 'LIBRA', 'symbol' => 'lb', 'unit_type_id' => 3, 'value' => 453.59]);
-        Unit::create(['name' => 'UNIDAD', 'symbol' => 'und', 'unit_type_id' => 4, 'value' => 1]);
 
         Currency::create(['name' => 'NUEVOS SOLES', 'symbol' => 'S/.']);
         Currency::create(['name' => 'DOLARES AMERICANOS', 'symbol' => 'US$']);
 
         Exchange::create(['date' => date('Y-m-d'), 'currency_id' => 1, 'sales' => 3, 'purchase' => 3]);
 
-        /*Category::create(['name' => 'REPUESTOS']);
+        Category::create(['name' => 'PRODUCTO FINAL']);
+        Category::create(['name' => 'MATERIA PRIMA']);
+        Category::create(['name' => 'INSUMOS']);
+        Category::create(['name' => 'HERRAMIENTAS']);
 
-        SubCategory::create(['name' => 'ACCESORIOS', 'category_id' => 1]);
-        SubCategory::create(['name' => 'ACEITES', 'category_id' => 1]);
-        SubCategory::create(['name' => 'CARROCERIA', 'category_id' => 1]);
-        SubCategory::create(['name' => 'CHASIS', 'category_id' => 1]);
-        SubCategory::create(['name' => 'CUERPO / AIRE ACONDICIONADO', 'category_id' => 1]);//5
-        SubCategory::create(['name' => 'DIRECCION', 'category_id' => 1]);
-        SubCategory::create(['name' => 'ELECTRICIDAD', 'category_id' => 1]);
-        SubCategory::create(['name' => 'ELECTRICO/ESCAPE/CALENT/SUMIN COMBU', 'category_id' => 1]);
-        SubCategory::create(['name' => 'EMBRAGUE', 'category_id' => 1]);
-        SubCategory::create(['name' => 'FLUIDO', 'category_id' => 1]);//10
-        SubCategory::create(['name' => 'FRENOS', 'category_id' => 1]);
-        SubCategory::create(['name' => 'INTERIOR / DEFENSAS', 'category_id' => 1]);
-        SubCategory::create(['name' => 'LLANTAS', 'category_id' => 1]);
-        SubCategory::create(['name' => 'LUBRICANTES', 'category_id' => 1]);
-        SubCategory::create(['name' => 'MATERIALES', 'category_id' => 1]);//15
-        SubCategory::create(['name' => 'MOTOR', 'category_id' => 1]);
-        SubCategory::create(['name' => 'PEGAMENTO', 'category_id' => 1]);
-        SubCategory::create(['name' => 'REFRIGERACION', 'category_id' => 1]);
-        SubCategory::create(['name' => 'SUSPENSION', 'category_id' => 1]);
-        SubCategory::create(['name' => 'TRANSMISION', 'category_id' => 1]);//20
-        SubCategory::create(['name' => 'TRANSMISION- AUTOMATICO', 'category_id' => 1]);
-        SubCategory::create(['name' => 'TRANSMISION-MANUAL', 'category_id' => 1]);
-        SubCategory::create(['name' => 'VARIOS', 'category_id' => 1]);*/
+        SubCategory::create(['name' => 'PIJAMA', 'category_id' => 1]);
+        SubCategory::create(['name' => 'BATA', 'category_id' => 1]);
+        SubCategory::create(['name' => 'BABY DOLL´S', 'category_id' => 1]);
+        SubCategory::create(['name' => 'BEBECRECE', 'category_id' => 1]);
+        SubCategory::create(['name' => 'CAMISÓN', 'category_id' => 1]);
+        SubCategory::create(['name' => 'CONJUNTO', 'category_id' => 1]);
+        SubCategory::create(['name' => 'ENTERIZO', 'category_id' => 1]);
+        SubCategory::create(['name' => 'JGO. MATERNO', 'category_id' => 1]);
+        SubCategory::create(['name' => 'JGO. BATA CAMISÓN', 'category_id' => 1]);
+        SubCategory::create(['name' => 'VESTIDO', 'category_id' => 1]);
+
+        SizeType::create(['name' => 'BEBE']);
+        SizeType::create(['name' => 'NIÑO']);
+        SizeType::create(['name' => 'ADULTO']);
+        Size::create(['name' => '6 MESES', 'symbol' => '6', 'size_type_id' => 1]);
+        Size::create(['name' => '12 MESES', 'symbol' => '12', 'size_type_id' => 1]);
+        Size::create(['name' => '18 MESES', 'symbol' => '18', 'size_type_id' => 1]);
+        Size::create(['name' => '24 MESES', 'symbol' => '24', 'size_type_id' => 1]);
+        Size::create(['name' => '36 MESES', 'symbol' => '36', 'size_type_id' => 1]);
+        Size::create(['name' => '2', 'symbol' => '2', 'size_type_id' => 2]);
+        Size::create(['name' => '4', 'symbol' => '4', 'size_type_id' => 2]);
+        Size::create(['name' => '6', 'symbol' => '6', 'size_type_id' => 2]);
+        Size::create(['name' => '8', 'symbol' => '8', 'size_type_id' => 2]);
+        Size::create(['name' => '10', 'symbol' => '10', 'size_type_id' => 2]);
+        Size::create(['name' => '12', 'symbol' => '12', 'size_type_id' => 2]);
+        Size::create(['name' => '14', 'symbol' => '14', 'size_type_id' => 2]);
+        Size::create(['name' => '16', 'symbol' => '16', 'size_type_id' => 2]);
+        Size::create(['name' => 'SMALL', 'symbol' => 'S', 'size_type_id' => 3]);
+        Size::create(['name' => 'MEDIUM', 'symbol' => 'M', 'size_type_id' => 3]);
+        Size::create(['name' => 'LARGE', 'symbol' => 'L', 'size_type_id' => 3]);
+        Size::create(['name' => 'EXTRA LARGE', 'symbol' => 'XL', 'size_type_id' => 3]);
+
 
         Warehouse::create(['name' => 'ALMACEN LIMA', 'ubigeo_id' => 1309, 'address' => 'DIRECCION']);
         Warehouse::create(['name' => 'ALMACEN TRUJILLO', 'ubigeo_id' => 1309, 'address' => 'DIRECCION']);

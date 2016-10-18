@@ -1,10 +1,13 @@
 <?php namespace App\Modules\Storage;
 
+
+use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SubCategory extends Model {
 
+	USE Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['name', 'description', 'category_id'];

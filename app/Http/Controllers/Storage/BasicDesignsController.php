@@ -95,4 +95,9 @@ class BasicDesignsController extends Controller {
 		$result = $this->repo->ajaxGetData($warehouse_id,$product_id);
 		return \Response::json($result);
 	}
+	public function getProducts($basic_design_id)
+	{
+		$model = $this->repo->findOrFail($basic_design_id);
+		return view('storage.basic_designs.products', compact('model'));
+	}
 }

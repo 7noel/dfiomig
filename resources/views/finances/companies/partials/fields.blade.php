@@ -3,14 +3,14 @@
 						<div class="col-sm-10">
 							<div class="form-inline">
 							{!! Form::select('id_type_id',$id_types , null, ['class'=>'form-control col-sm-1', 'id'=>'listDoc', 'required']) !!}
-							{!! Form::text('doc', null, ['class'=>'form-control uppercase', 'required']) !!}
+							{!! Form::text('doc', null, ['class'=>'form-control uppercase', 'id'=>'doc', 'required']) !!}
 							</div>
 						</div>
 					</div>
 					<div class="form-group form-group-sm div_ruc">
 						{!! Form::label('company_name','Razón Social', ['class'=>'col-sm-2 control-label']) !!}
 						<div class="col-sm-4">
-						{!! Form::text('company_name', null, ['class'=>'form-control uppercase']) !!}
+						{!! Form::text('company_name', null, ['id'=>'company_name', 'class'=>'form-control uppercase']) !!}
 						</div>
 						{!! Form::label('brand_name','Nombre Comercial', ['class'=>'col-sm-2 control-label']) !!}
 						<div class="col-sm-4">
@@ -44,7 +44,7 @@
 					<div class="form-group form-group-sm">
 						{!! Form::label('address','Direccion', ['class'=>'col-sm-2 control-label']) !!}
 						<div class="col-sm-10">
-						{!! Form::text('address', null, ['class'=>'form-control uppercase', 'required']) !!}
+						{!! Form::text('address', null, ['id'=>'address', 'class'=>'form-control uppercase', 'required']) !!}
 						</div>
 					</div>
 					<div class="form-group form-group-sm">

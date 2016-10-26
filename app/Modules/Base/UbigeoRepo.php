@@ -89,4 +89,8 @@ class UbigeoRepo extends BaseRepo{
 		$distritos = Ubigeo::select('distrito')->where('provincia','=',$provincia)->get();
 		return $distritos;
 	}
+	public function findByCode($code)
+	{
+		return Ubigeo::where('code', $code)->first();
+	}
 }

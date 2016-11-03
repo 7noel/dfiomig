@@ -8,6 +8,7 @@ use App\Modules\Storage\UnitRepo;
 use App\Modules\Storage\SubCategoryRepo;
 use App\Modules\Storage\ProductRepo;
 use App\Modules\Storage\BasicDesignRepo;
+use App\Modules\Storage\SizeRepo;
 use App\Modules\Base\CurrencyRepo;
 
 use App\Modules\Storage\Stock;
@@ -19,13 +20,15 @@ class BasicDesignsController extends Controller {
 	protected $subCategoryRepo;
 	protected $unitRepo;
 	protected $currencyRepo;
+	protected $sizeRepo;
 
-	public function __construct(BasicDesignRepo $repo, SubCategoryRepo $subCategoryRepo, ProductRepo $productRepo, UnitRepo $unitRepo, CurrencyRepo $currencyRepo) {
+	public function __construct(BasicDesignRepo $repo, SubCategoryRepo $subCategoryRepo, ProductRepo $productRepo, UnitRepo $unitRepo, CurrencyRepo $currencyRepo, SizeRepo $sizeRepo) {
 		$this->repo = $repo;
 		$this->productRepo = $productRepo;
 		$this->subCategoryRepo = $subCategoryRepo;
 		$this->unitRepo = $unitRepo;
 		$this->currencyRepo = $currencyRepo;
+		$this->sizeRepo = $sizeRepo;
 	}
 
 	public function index()
@@ -98,6 +101,11 @@ class BasicDesignsController extends Controller {
 	public function getProducts($basic_design_id)
 	{
 		$model = $this->repo->findOrFail($basic_design_id);
-		return view('storage.basic_designs.products', compact('model'));
+		$sizes = $this->sizeRepo->getListGroup('size_type', 'symbol');
+		return view('storage.basic_designs.products', compact('model', 'sizes'));
+	}
+	public function generateProducts()
+	{
+		dd(\Request::all());
 	}
 }

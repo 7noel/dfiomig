@@ -38,7 +38,7 @@ abstract class BaseRepo{
 	public function getListGroup($group, $name='name', $id='id')
 	{
 		foreach ($this->model->with($group)->get() as $key => $u) {
-			$r[$u->$group->name][$u->id] = $u->name;
+			$r[$u->$group->name][$u->$id] = $u->$name;
 		}
 		if (isset($r)) {
 			return [''=>'Seleccionar'] + $r;

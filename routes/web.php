@@ -80,6 +80,7 @@ Route::group(['prefix'=>'storage', 'middleware'=>['auth', 'permissions'], 'names
 	Route::resource('size_types','SizeTypesController');
 	Route::resource('sizes','SizesController');
 	Route::get('products_by_design/{basic_design_id}', ['as' => 'products_by_design', 'uses' => 'BasicDesignsController@getProducts']);
+	Route::post('products_generate_by_design', ['as' => 'products_generate_by_design', 'uses' => 'BasicDesignsController@generateProducts']);
 });
 
 Route::group(['prefix'=>'humanresources', 'middleware'=>['auth', 'permissions'], 'namespace'=>'HumanResources'], function(){

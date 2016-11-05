@@ -31,17 +31,14 @@ $(document).ready(function(){
 });
 
 function getDataPadron (ruc) {
-	var url = "http://api.noelhh.com/api/ruc/" + ruc;
+	var url = "http://api.noelhh.com/padron/ruc/" + ruc;
 	$.get(url, function(data){
 		if (data) {
 			$('#company_name').val(data.razon_social);
 			$('#address').val(data.direccion);
-			url = "/getDataUbigeo/" + data.ubigeo;
-			$.get(url, function (u) {
-				$('#lstDepartamento').val(u.departamento);
-				$('#lstProvincia').val(u.provincia);
-				$('#lstDistrito').val(u.id);
-			});
+			$('#lstDepartamento').val(data.ubigeo.departamento);
+			$('#lstProvincia').val(data.ubigeo.provincia);
+			$('#lstDistrito').val(data.ubigeo.id);
 		}
 	});
 }

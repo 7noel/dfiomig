@@ -10,7 +10,7 @@ class Stock extends Model {
 	USE Auditable;
 	use SoftDeletes;
 
-	protected $fillable = ['warehouse_id', 'product_id', 'stock', 'currency_id', 'avarege_value'];
+	protected $fillable = ['warehouse_id', 'product_id', 'stock', 'stock_initial', 'stock_min', 'stock_min', 'currency_id', 'avarege_value'];
 
 	public function warehouse()
 	{

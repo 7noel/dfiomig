@@ -4,7 +4,10 @@ namespace App\Modules\Storage;
 
 use App\Modules\Base\BaseRepo;
 use App\Modules\Storage\Product;
+use App\Modules\Storage\ProductRepo;
 use App\Modules\Storage\StockRepo;
+use App\Modules\Storage\Stock;
+use App\Modules\Storage\BasicDesign;
 
 class ProductRepo extends BaseRepo{
 
@@ -51,5 +54,36 @@ class ProductRepo extends BaseRepo{
 	{
 		$stockRepo = new StockRepo;
 		return $stockRepo->ajaxGetData($warehouse_id, $product_id);
+	}
+	public function generateProducts($data)
+	{
+		$design = BasicDesign::findOrFail($data['basic_design_id']);
+		foreach ($data['products'] as $key => $p) {
+			//dd($p);
+			if (isset($p)) {
+				$product = new Product;
+				$pr['name'] = $design->name;
+				$pr['description'] = $p['description'];
+				$pr['sub_category_id'] = $design->sub_category_id;
+				$pr['unit_id'] = $design->unit_id;
+				$pr['currency_id'] = 1;
+				$pr['size_id'] = $p['size_id'];
+				$pr['code_cut'] = $data['code_cut'];
+				$pr['basic_design_id'] = $data['basic_design_id'];
+				$pr['last_purchase'] = $p['last_purchase'];
+				$pr['profit_margin'] = $p['profit_margin'];
+				$pr = $this->prepareData($pr);
+				$product->fill($pr)->save();
+
+				$stock = new Stock;
+				$st['warehouse_id'] = 1;
+				$st['product_id'] = $product->id;
+				$st['stock_initial'] = $p['stock_initial'];
+				$st['stock'] = $p['stock_initial'];
+				$st['avarage_value'] = $p['last_purchase'];
+				$stock->fill($st)->save();
+			}
+		}
+		return true;
 	}
 }

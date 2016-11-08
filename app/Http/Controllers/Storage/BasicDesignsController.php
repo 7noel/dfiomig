@@ -106,6 +106,8 @@ class BasicDesignsController extends Controller {
 	}
 	public function generateProducts()
 	{
-		dd(\Request::all());
+		$rq = \Request::all();
+		$this->productRepo->generateProducts($rq);
+		return \Redirect::route('basic_designs.index');
 	}
 }

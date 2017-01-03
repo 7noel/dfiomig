@@ -25,14 +25,14 @@ class SizesController extends Controller {
 
 	public function create()
 	{
-		$unit_types = $this->sizeTypeRepo->getList();
-		return view('partials.create', compact('unit_types'));
+		$size_types = $this->sizeTypeRepo->getList();
+		return view('partials.create', compact('size_types'));
 	}
 
-	public function store(FormUnitRequest $request)
+	public function store()
 	{
 		$this->repo->save(\Request::all());
-		return \Redirect::route('units.index');
+		return \Redirect::route('sizes.index');
 	}
 
 	public function show($id)
@@ -42,22 +42,22 @@ class SizesController extends Controller {
 
 	public function edit($id)
 	{
-		$unit_types = $this->sizeTypeRepo->getList();
+		$size_types = $this->sizeTypeRepo->getList();
 		$model = $this->repo->findOrFail($id);
-		return view('partials.edit', compact('model', 'unit_types'));
+		return view('partials.edit', compact('model', 'size_types'));
 	}
 
 	public function update($id, FormUnitRequest $request)
 	{
 		$this->repo->save(\Request::all(), $id);
-		return \Redirect::route('units.index');
+		return \Redirect::route('sizes.index');
 	}
 
 	public function destroy($id)
 	{
 		$model = $this->repo->destroy($id);
 		if (\Request::ajax()) {	return $model; }
-		return redirect()->route('units.index');
+		return redirect()->route('sizes.index');
 	}
 	public function ajaxList($uni_type_id)
 	{

@@ -19,7 +19,7 @@
 								<tr data-id="{{ $detail->id }}">
 									{!! Form::hidden("details[$i][basic_design_id]", $detail->basic_design_id, ['class'=>'designId','data-designid'=>'']) !!}
 									{!! Form::hidden("details[$i][unit_id]", $detail->unit_id, ['class'=>'unitId','data-unitid'=>'']) !!}
-									<td><span class='form-control design_id' data-labelid>{{ $detail->basic_design_id }}</span></td>
+									<td><span class='form-control design_id text-right' data-labelid>{{ $detail->basic_design_id }}</span></td>
 									<td>{!! Form::text("details[$i][txtDesign]", $detail->basic_design->name, ['class'=>'form-control txtDesign', 'data-design'=>'', 'required'=>'required', 'disabled']); !!}</td>
 									<td>{!! Form::text("details[$i][quantity]", $detail->quantity, ['class'=>'form-control txtCantidad text-right', 'data-cantidad'=>'']) !!}</td>
 									<td>{!! Form::text("details[$i][price]", $detail->price, ['class'=>'form-control txtPrecio text-right', 'data-precio'=>'']) !!}</td>
@@ -36,6 +36,9 @@
 							<tr>
 								{!! Form::hidden('data1', null, ['class'=>'designId','data-designid'=>'']) !!}
 								{!! Form::hidden('data2', null, ['class'=>'unitId','data-unitid'=>'']) !!}
+								<div style="display:none;">
+									holaaa
+								</div>
 								<td><span class='form-control design_id text-right' data-labelid></span></td>
 								<td>{!! Form::text('data3', null, ['class'=>'form-control txtDesign', 'data-design'=>'', 'required'=>'required']); !!}</td>
 								<td>{!! Form::text('data4', null, ['class'=>'form-control txtCantidad text-right', 'data-cantidad'=>'']) !!}</td>
@@ -65,3 +68,26 @@
 							</tbody>
 						</table>
 						
+						<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

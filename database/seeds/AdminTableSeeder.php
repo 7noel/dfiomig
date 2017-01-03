@@ -60,8 +60,13 @@ class AdminTableSeeder extends Seeder {
         IdType::create(['name' => 'PASAPORTE', 'symbol' => 'PAS']);
 
         Job::create(['name' => 'ANALISTA DE SISTEMAS']);
+        Job::create(['name' => 'GERENTE GENERAL']);
+        Job::create(['name' => 'DIRECTIVA']);
+        Job::create(['name' => 'GERENTE ADMINISTRATIVO']);
+        Job::create(['name' => 'ASISTENTE DE VENTAS']);
+        Job::create(['name' => 'ALMACENERO']);
+        Job::create(['name' => 'PATRONISTA']);
         Job::create(['name' => 'VENDEDOR']);
-        Job::create(['name' => 'ADMINISTRADOR']);
 
         Employee::create(['name' => 'NOEL', 'paternal_surname'=>'HUILLCA', 'maternal_surname'=>'HUAMANI', 'full_name'=>'HUILLCA HUAMANI NOEL', 'id_type_id'=>'2', 'doc'=>'44243484', 'job_id'=>'2', 'gender'=>'0', 'address'=>'JR. LAS GROSELLAS 910', 'ubigeo_id'=>'1306']);
         //Employee::create(['name' => '', 'paternal_surname'=>'', 'maternal_surname'=>'', 'full_name'=>'', 'id_type_id'=>'2', 'doc'=>'', 'job_id'=>'', 'gender'=>'', 'address'=>'', 'ubigeo_id'=>''])

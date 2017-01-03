@@ -11,15 +11,9 @@
 						</div>
 					</div>
 					<div class="form-group  form-group-sm">
-						{!! Form::label('unit_type_id','Tipo de Unidad', ['class'=>'col-sm-2 control-label']) !!}
+						{!! Form::label('size_type_id','Tipo de Unidad', ['class'=>'col-sm-2 control-label']) !!}
 						<div class="col-sm-10">
-						{!! Form::select('unit_type_id', $unit_types, null,['class'=>'form-control']); !!}
-						</div>
-					</div>
-					<div class="form-group  form-group-sm">
-						{!! Form::label('value','Valor', ['class'=>'col-sm-2 control-label']) !!}
-						<div class="col-sm-10">
-						{!! Form::text('value', null, ['class'=>'form-control']) !!}
+						{!! Form::select('size_type_id', $size_types, null,['class'=>'form-control']); !!}
 						</div>
 					</div>
 					<div class="form-group  form-group-sm">

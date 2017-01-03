@@ -86,7 +86,8 @@ abstract class BaseRepo{
 			$model = $this->model->findOrFail($id);
 			$model->fill($data);
 		} else {
-			$model = $this->model->fill($data);			
+			$newModel = $this->getModel();
+			$model = $newModel->fill($data);			
 		}
 		if ($model->save()) {
 			return $model;
@@ -98,15 +99,20 @@ abstract class BaseRepo{
 	{
 		return $data;
 	}
+	/**
+	 * Graba varias items hijos de 2 tablas padres
+	 * @param  [array] $allData [contiene los elementos a ingresar]
+	 * @param  [array] $k1      [tiene key y value del padre desde donde ingresa]
+	 * @param  [string] $k2      [nombre del key de los items]
+	 * @return [boolean]          [description]
+	 */
 	public function syncMany($allData,$k1,$k2)
 	{
 		$new_ids = [];
 		foreach ($allData as $key => $data) {
 			$new_ids[] = $data["$k2"];
 		}
-		$old_ids = $this->model->where($k1['key'],$k1['value'])->lists($k2);
-		if (!isset($old_ids)) { $old_ids=[]; }
-
+		$old_ids = $this->model->where($k1['key'],$k1['value'])->pluck($k2)->toArray();
 		$toDelete = array_diff($old_ids, $new_ids);
 		$toSave = array_diff($new_ids, $old_ids);
 		$toEdit = array_intersect($old_ids, $new_ids);

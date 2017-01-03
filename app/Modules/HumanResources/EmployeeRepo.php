@@ -14,6 +14,10 @@ class EmployeeRepo extends BaseRepo{
 	{
 		return Employee::where('full_name','like',"%$term%")->get();
 	}
+	public function autocompleteSeller($term)
+	{
+		return Employee::where("job_id","2")->where('full_name','like',"%$term%")->get();
+	}
 	public function save($data, $id=0)
 	{
 		$model = parent::save($data, $id);
@@ -30,12 +34,8 @@ class EmployeeRepo extends BaseRepo{
 		
 		return $data;
 	}
-	public function getAdviserOldId($other_id)
+	public function getListSellers()
 	{
-		return Employee::where('job_id', 6)->where('other_id',$other_id)->first();
+		return [""=>"Seleccionar"] + Employee::where('job_id', 2)->pluck('full_name', 'id')->toArray();
 	}
-	// public function getListTechnicians()
-	// {
-	// 	return [""=>"Seleccionar"] + Employee::where('job_id', 4)->pluck('full_name', 'id')->toArray();
-	// }
 }

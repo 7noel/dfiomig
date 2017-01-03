@@ -16,6 +16,7 @@ class CreateDocumentTypesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
+			$table->string('code_sunat');
 			$table->string('description');
 			$table->boolean('to_sales');
 			$table->boolean('to_purchases');
@@ -31,7 +32,7 @@ class CreateDocumentTypesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('document_types');
+		Schema::dropIfExists('document_types');
 	}
 
 }

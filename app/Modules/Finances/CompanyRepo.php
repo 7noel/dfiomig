@@ -28,5 +28,9 @@ class CompanyRepo extends BaseRepo{
 		}
 		return $data;
 	}
+	public function getListMyCompany()
+	{
+		return [""=>"Seleccionar"] + Company::where('is_my_company','1')->pluck('company_name', 'id')->toArray();
+	}
 	
 }

@@ -52,9 +52,9 @@ class EmployeesController extends Controller {
 
 	public function edit($id)
 	{
+		$model = $this->repo->findOrFail($id);
 		$jobs = $this->jobRepo->getList();
 		$id_types = $this->idTypeRepo->getList2('symbol');
-		$model = $this->repo->findOrFail($id);
 		$ubigeo = $this->ubigeoRepo->listUbigeo($model->ubigeo_id);
 		return view('partials.edit', compact('model', 'jobs', 'id_types', 'ubigeo'));
 	}
@@ -70,6 +70,21 @@ class EmployeesController extends Controller {
 		$model = $this->repo->destroy($id);
 		if (\Request::ajax()) {	return $model; }
 		return redirect()->route('employees.index');
+	}
+
+	public function ajaxAutocompleteSellers()
+	{
+		$term = \Input::get('term');
+		$models = $this->repo->autocompleteSeller($term);
+		$result = [];
+		foreach ($models as $model) {
+			$result[]=[
+				'value' => $model->full_name,
+				'id' => $model->id,
+				'label' => $model->full_name
+			];
+		}
+		return \Response::json($result);
 	}
 
 }

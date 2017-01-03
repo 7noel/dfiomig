@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Size extends Model {
 
-	USE Auditable;
+	use Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['name', 'symbol', 'size_type_id', 'description'];

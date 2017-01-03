@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Stock extends Model {
 
-	USE Auditable;
+	use Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['warehouse_id', 'product_id', 'stock', 'stock_initial', 'stock_min', 'stock_min', 'currency_id', 'avarege_value'];

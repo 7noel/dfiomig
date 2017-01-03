@@ -77,11 +77,12 @@ class MenuController extends Controller
                 ['name' => 'Tipo de Cambio', 'route' => 'exchanges.index' ],
                 ['name' => 'Empresas', 'route' => 'companies.index' ],
                 ['name' => 'Documentos', 'route' => 'document_types.index' ],
+                ['name' => 'Control de Documentos', 'route' => 'document_controls.index' ],
                 ['name' => 'Condiciones de Pago', 'route' => 'payment_conditions.index' ],
                 ['name' => 'Medios de Pago', 'route' => 'payment_conditions.index' ],
             ],
             'Ventas'=>[
-                ['name' => 'Notas de Pedido', 'url' => '#' ],
+                ['name' => 'Notas de Pedido', 'route' => 'orders.index' ],
                 ['name' => 'Validar Notas de Pedido', 'url' => '#' ],
                 ['name' => 'Facturación', 'url' => '#' ],
             ],

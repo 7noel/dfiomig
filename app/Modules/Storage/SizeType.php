@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Storage;
 
+use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SizeType extends Model {
 
+	use Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['name', 'description'];

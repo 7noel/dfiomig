@@ -25,6 +25,12 @@ return array(
 			'show'   => ['panel'=>'Vizualizando Tipo de Documento'],
 			'edit'   => ['panel'=>'Editar Tipo de Documento: ', 'update'=>'Actualizar Tipo de Documento', 'delete'=>'Eliminar Tipo de Documento']
 		],
+		'document_controls' => [
+			'index'  => ['panel'=>'Controles de Documento', 'create'=>'Crear Control de Documento'],
+			'create' => ['panel'=>'Nueva Control de Documento:', 'create'=>'Crear Control de Documento'],
+			'show'   => ['panel'=>'Vizualizando Control de Documento'],
+			'edit'   => ['panel'=>'Editar Control de Documento: ', 'update'=>'Actualizar Control de Documento', 'delete'=>'Eliminar Control de Documento']
+		],
 	// ],
 	// 'finances' => [
 		'exchanges' => [
@@ -95,53 +101,11 @@ return array(
 		],
 	// ],
 	// 'sales' => [
-		'modelos' => [
-			'index'  => ['panel'=>'Modelos', 'create'=>'Crear Modelo'],
-			'create' => ['panel'=>'Nuevo Modelo', 'create'=>'Crear Modelo'],
-			'show'   => ['panel'=>'Vizualizando Modelo:'],
-			'edit'   => ['panel'=>'Editar Modelo: ', 'update'=>'Actualizar Modelo', 'delete'=>'Eliminar Modelo']
-		],
-		'versions' => [
-			'index'  => ['panel'=>'Versiones', 'create'=>'Crear Versión'],
-			'create' => ['panel'=>'Nuevo Versión', 'create'=>'Crear Versión'],
-			'show'   => ['panel'=>'Vizualizando Versión:'],
-			'edit'   => ['panel'=>'Editar Versión: ', 'update'=>'Actualizar Versión', 'delete'=>'Eliminar Versión']
-		],
-		'colors' => [
-			'index'  => ['panel'=>'Colores', 'create'=>'Crear Color'],
-			'create' => ['panel'=>'Nuevo Color', 'create'=>'Crear Color'],
-			'show'   => ['panel'=>'Vizualizando Color:'],
-			'edit'   => ['panel'=>'Editar Color: ', 'update'=>'Actualizar Color', 'delete'=>'Eliminar Color']
-		],
-		'catalog_cars' => [
-			'index'  => ['panel'=>'Catálogo de Vehículos', 'create'=>'Crear Vehículo'],
-			'create' => ['panel'=>'Nuevo Vehículo', 'create'=>'Crear Vehículo'],
-			'show'   => ['panel'=>'Vizualizando Vehículo:'],
-			'edit'   => ['panel'=>'Editar Vehículo: ', 'update'=>'Actualizar Vehículo', 'delete'=>'Eliminar Vehículo']
-		],
-		'features' => [
-			'index'  => ['panel'=>'Especificaciones', 'create'=>'Crear Especificación'],
-			'create' => ['panel'=>'Nuevo Especificación', 'create'=>'Crear Especificación'],
-			'show'   => ['panel'=>'Vizualizando Especificación:'],
-			'edit'   => ['panel'=>'Editar Especificación: ', 'update'=>'Actualizar Especificación', 'delete'=>'Eliminar Especificación']
-		],
-		'feature_groups' => [
-			'index'  => ['panel'=>'Grupo de Especificaciones', 'create'=>'Crear Grupo'],
-			'create' => ['panel'=>'Nuevo Grupo', 'create'=>'Crear Grupo'],
-			'show'   => ['panel'=>'Vizualizando Grupo:'],
-			'edit'   => ['panel'=>'Editar Grupo: ', 'update'=>'Actualizar Grupo', 'delete'=>'Eliminar Grupo']
-		],
-		'car_quotes' => [
-			'index'  => ['panel'=>'Cotizaciones de Vehículos', 'create'=>'Crear Cotización'],
-			'create' => ['panel'=>'Nuevo Cotización', 'create'=>'Crear Cotización'],
-			'show'   => ['panel'=>'Vizualizando Cotización:'],
-			'edit'   => ['panel'=>'Editar Cotización: ', 'update'=>'Actualizar Cotización', 'delete'=>'Eliminar Cotización']
-		],
-		'clientes' => [
-			'index'  => ['panel'=>'Clientes', 'create'=>'Crear Cliente'],
-			'create' => ['panel'=>'Nueva Cliente', 'create'=>'Crear Cliente'],
-			'show'   => ['panel'=>'Vizualizando Cliente:'],
-			'edit'   => ['panel'=>'Editar Cliente: ', 'update'=>'Actualizar Cliente', 'delete'=>'Eliminar Cliente']
+		'orders' => [
+			'index'  => ['panel'=>'Ordenes', 'create'=>'Crear Orden'],
+			'create' => ['panel'=>'Nuevo Orden', 'create'=>'Crear Orden'],
+			'show'   => ['panel'=>'Vizualizando Orden:'],
+			'edit'   => ['panel'=>'Editar Orden: ', 'update'=>'Actualizar Orden', 'delete'=>'Eliminar Orden']
 		],
 	// ],
 	// 'guard' => [

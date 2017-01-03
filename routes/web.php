@@ -48,6 +48,9 @@ Route::group(['middleware'=>['auth']], function(){
 	Route::get('storage/products/autocomplete/{warehouse_id}', ['as' => 'productsAutocomplete','uses' => 'Storage\ProductsController@ajaxAutocomplete']);
 	Route::get('storage/products/ajaxGetData/{warehouse_id}/{product_id}', ['as' => 'ajaxGetData','uses' => 'Storage\ProductsController@ajaxGetData']);
 	Route::get('guard/users/autocomplete', ['as' => 'usersAutocomplete','uses' => 'Security\UsersController@ajaxAutocomplete']);
+	Route::get('api/companies/autocompleteAjax', ['as' => 'companiesAutocomplete','uses' => 'Finances\CompaniesController@ajaxAutocomplete']);
+	Route::get('api/sellers/autocompleteAjax', ['as' => 'sellersAutocomplete','uses' => 'HumanResources\EmployeesController@ajaxAutocompleteSellers']);
+	Route::get('api/designs/autocompleteAjax', ['as' => 'designsAutocomplete','uses' => 'Storage\BasicDesignsController@ajaxAutocomplete']);
 });
 
 Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'permissions'], 'namespace'=>'Admin'], function(){
@@ -55,6 +58,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'permissions'], 'namespa
 	Route::resource('unit_types','UnitTypesController');
 	Route::resource('currencies','CurrenciesController');
 	Route::resource('document_types','DocumentTypesController');
+	Route::resource('document_controls','DocumentControlsController');
 });
 Route::group(['prefix'=>'finances', 'middleware'=>['auth', 'permissions'], 'namespace'=>'Finances'], function(){
 	Route::resource('exchanges','ExchangesController');
@@ -86,4 +90,8 @@ Route::group(['prefix'=>'storage', 'middleware'=>['auth', 'permissions'], 'names
 Route::group(['prefix'=>'humanresources', 'middleware'=>['auth', 'permissions'], 'namespace'=>'HumanResources'], function(){
 	Route::resource('employees','EmployeesController');
 	Route::resource('jobs','JobsController');
+});
+
+Route::group(['prefix'=>'sales', 'middleware'=>['auth', 'permissions'], 'namespace'=>'Sales'], function(){
+	Route::resource('orders','OrdersController');
 });

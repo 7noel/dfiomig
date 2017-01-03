@@ -29,7 +29,7 @@ class CreateIdTypesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('id_types');
+		Schema::dropIfExists('id_types');
 	}
 
 }

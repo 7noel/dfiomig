@@ -61,7 +61,8 @@ class BasicDesignsController extends Controller {
 	{
 		$model = $this->repo->findOrFail($id);
 		$sub_categories = $this->subCategoryRepo->getListGroup('category');
-		return view('partials.edit', compact('model', 'sub_categories'));
+		$currencies = $this->currencyRepo->getList('symbol');
+		return view('partials.edit', compact('model', 'sub_categories', 'currencies'));
 	}
 
 	public function update($id)
@@ -77,11 +78,10 @@ class BasicDesignsController extends Controller {
 		return redirect()->route('basic_designs.index');
 	}
 
-	public function ajaxAutocomplete($warehouse_id)
+	public function ajaxAutocomplete()
 	{
 		$term = \Input::get('term');
-		ini_set('memory_limit','1024M');
-		$models = $this->repo->autocomplete($term,$warehouse_id);
+		$models = $this->repo->autocomplete($term);
 		$result=[];
 		foreach ($models as $model) {
 			$result[]=[

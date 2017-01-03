@@ -29,7 +29,7 @@ class CreateUbigeosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('ubigeos');
+		Schema::dropIfExists('ubigeos');
 	}
 
 }

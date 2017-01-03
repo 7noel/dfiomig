@@ -31,7 +31,7 @@ class CreatePaymentConditionsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('payment_conditions');
+		Schema::dropIfExists('payment_conditions');
 	}
 
 }

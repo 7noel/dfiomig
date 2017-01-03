@@ -6231,3 +6231,17 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+
+/* Noel Huillca */
+
+#tableItems td .form-control{
+  padding: 0px 6px;
+  height: 25px;
+}
+#tableItems td {
+  padding: 1px;
+}
+#tableItems .checkbox{
+  padding: 0;
+  min-height: 22px;
+}

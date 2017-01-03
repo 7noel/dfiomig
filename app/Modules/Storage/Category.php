@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model {
 
-	USE Auditable;
+	use Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['name', 'description'];

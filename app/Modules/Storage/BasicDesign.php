@@ -1,13 +1,15 @@
 <?php namespace App\Modules\Storage;
 
+use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BasicDesign extends Model {
 
+	use Auditable;
 	use SoftDeletes;
 
-	protected $fillable = ['name', 'intern_code', 'description', 'sub_category_id', 'unit_id'];
+	protected $fillable = ['name', 'intern_code', 'description', 'sub_category_id', 'unit_id', 'price'];
 
 	public function scopeName($query, $name){
 		if (trim($name) != "") {

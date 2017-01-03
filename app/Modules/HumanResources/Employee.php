@@ -1,10 +1,12 @@
 <?php namespace App\Modules\HumanResources;
 
+use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Employee extends Model {
 
+	use Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['name', 'paternal_surname', 'maternal_surname', 'full_name', 'id_type_id', 'doc', 'job_id', 'gender', 'address', 'ubigeo_id', 'phone_personal', 'mobile_personal', 'phone_company', 'mobile_company', 'email_personal', 'email_company', 'user_id', 'signature','other_id'];

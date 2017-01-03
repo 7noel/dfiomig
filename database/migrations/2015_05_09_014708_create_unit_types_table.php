@@ -29,7 +29,7 @@ class CreateUnitTypesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('unit_types');
+		Schema::dropIfExists('unit_types');
 	}
 
 }

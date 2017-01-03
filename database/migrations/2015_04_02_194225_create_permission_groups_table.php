@@ -29,7 +29,7 @@ class CreatePermissionGroupsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('permission_groups');
+		Schema::dropIfExists('permission_groups');
 	}
 
 }

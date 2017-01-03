@@ -33,7 +33,7 @@ class CreateSizesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('sizes');
+		Schema::dropIfExists('sizes');
 	}
 
 }

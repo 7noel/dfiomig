@@ -33,7 +33,7 @@ class CreateExchangesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('exchanges');
+		Schema::dropIfExists('exchanges');
 	}
 
 }

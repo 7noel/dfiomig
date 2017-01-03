@@ -29,7 +29,7 @@ class CreateSizeTypesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('size_types');
+		Schema::dropIfExists('size_types');
 	}
 
 }

@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Base;
 
+use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UnitType extends Model {
 
+	use Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['name', 'description'];

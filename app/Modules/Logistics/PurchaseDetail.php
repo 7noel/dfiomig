@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Logistics;
 
+use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PurchaseDetail extends Model {
 
+	use Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['purchase_id', 'product_id', 'unit_id', 'quantity', 'discount', 'price', 'total'];

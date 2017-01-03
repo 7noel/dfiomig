@@ -40,7 +40,7 @@ class CreateStocksTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('stocks');
+		Schema::dropIfExists('stocks');
 	}
 
 }

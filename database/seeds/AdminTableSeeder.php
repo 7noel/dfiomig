@@ -13,6 +13,7 @@ use App\Modules\Storage\SizeType;
 use App\Modules\Storage\Size;
 use App\Modules\Base\Currency;
 use App\Modules\Finances\Exchange;
+use App\Modules\Finances\Company;
 use App\Modules\Storage\Category;
 use App\Modules\Storage\SubCategory;
 use App\Modules\Storage\Warehouse;
@@ -21,6 +22,7 @@ use App\Modules\Base\DocumentType;
 use App\Modules\Finances\PaymentCondition;
 use App\Modules\Sales\Modelo;
 use App\Modules\HumanResources\Job;
+use App\Modules\HumanResources\Employee;
 
 use Faker\Factory as Faker;
 
@@ -50,14 +52,21 @@ class AdminTableSeeder extends Seeder {
         Role::create(['name' => 'RECEPCIONISTA']);
         Role::create(['name' => 'GERENTE GENERAL']);
 
-        Job::create(['name' => 'ANALISTA DE SISTEMAS']);
-        Job::create(['name' => 'ASESOR DE VENTAS']);
-        Job::create(['name' => 'ADMINISTRADOR DE VENTAS']);
-        Job::create(['name' => 'TECNICO']);
-        Job::create(['name' => 'JEFE DE TALLER']);
-        Job::create(['name' => 'ASESOR DE SERVICIO']);
-        Job::create(['name' => 'COORDINADOR DE POSTVENTA']);
         Job::create(['name' => 'JEFE DE POSTVENTA']);*/
+
+        IdType::create(['name' => 'REGISTRO UNICO DE CONTRIBUYENTE', 'symbol' => 'RUC']);
+        IdType::create(['name' => 'DOCUMENTO NACIONAL DE IDENTIDAD', 'symbol' => 'DNI']);
+        IdType::create(['name' => 'CARNÉ DE EXTRANJERÍA', 'symbol' => 'CEX']);
+        IdType::create(['name' => 'PASAPORTE', 'symbol' => 'PAS']);
+
+        Job::create(['name' => 'ANALISTA DE SISTEMAS']);
+        Job::create(['name' => 'VENDEDOR']);
+        Job::create(['name' => 'ADMINISTRADOR']);
+
+        Employee::create(['name' => 'NOEL', 'paternal_surname'=>'HUILLCA', 'maternal_surname'=>'HUAMANI', 'full_name'=>'HUILLCA HUAMANI NOEL', 'id_type_id'=>'2', 'doc'=>'44243484', 'job_id'=>'2', 'gender'=>'0', 'address'=>'JR. LAS GROSELLAS 910', 'ubigeo_id'=>'1306']);
+        //Employee::create(['name' => '', 'paternal_surname'=>'', 'maternal_surname'=>'', 'full_name'=>'', 'id_type_id'=>'2', 'doc'=>'', 'job_id'=>'', 'gender'=>'', 'address'=>'', 'ubigeo_id'=>''])
+        Company::create(['company_name'=>'HUILLCA HUAMANI NOEL', 'id_type_id'=>'2', 'doc'=>'44243484', 'address'=>'JR. LAS GROSELLAS 910', 'ubigeo_id'=>'1306']);
+
 
         PermissionGroup::create(['name' => 'SISTEMAS']);
         PermissionGroup::create(['name' => 'ALMACEN']);
@@ -93,11 +102,6 @@ class AdminTableSeeder extends Seeder {
         Permission::create(['name' => 'Modelos Crear', 'action' => 'modelos.create', 'permission_group_id' => '4']);
         Permission::create(['name' => 'Modelos Editar', 'action' => 'modelos.edit', 'permission_group_id' => '4']);
         Permission::create(['name' => 'Modelos Eliminar', 'action' => 'modelos.destroy', 'permission_group_id' => '4']);
-
-        IdType::create(['name' => 'REGISTRO UNICO DE CONTRIBUYENTE', 'symbol' => 'RUC']);
-        IdType::create(['name' => 'DOCUMENTO NACIONAL DE IDENTIDAD', 'symbol' => 'DNI']);
-        IdType::create(['name' => 'CARNÉ DE EXTRANJERÍA', 'symbol' => 'CEX']);
-        IdType::create(['name' => 'PASAPORTE', 'symbol' => 'PAS']);
 
         UnitType::create(['name' => 'LONGITUD']);
         UnitType::create(['name' => 'VOLUMEN']);

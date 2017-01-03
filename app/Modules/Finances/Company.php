@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Finances;
 
+use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model {
 
+	use Auditable;
 	use SoftDeletes;
 
 	protected $fillable = ['company_name', 'brand_name', 'name', 'paternal_surname', 'maternal_surname', 'id_type_id', 'doc', 'address', 'ubigeo_id', 'phone', 'mobile', 'email', 'birth', 'is_provider'];

@@ -29,6 +29,7 @@ class CreateCompaniesTable extends Migration {
 			$table->string('email');
 			$table->date('birth')->nullable();
 			$table->boolean('is_provider');
+			$table->boolean('is_my_company');
 
 			$table->foreign('id_type_id')->references('id')->on('id_types');
 			$table->foreign('ubigeo_id')->references('id')->on('ubigeos');
@@ -44,7 +45,7 @@ class CreateCompaniesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('companies');
+		Schema::dropIfExists('companies');
 	}
 
 }

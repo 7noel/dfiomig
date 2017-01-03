@@ -1,88 +1,133 @@
 $(document).ready(function(){
-	if ($('#listDoc').val() == 'RUC') {
-		$('.div_ruc').show();
-		$('.div_dni').hide();
-	} else {
-		$('.div_ruc').hide();
-		$('.div_dni').show();
-	}
-	$('#listDoc').change(function(){
-		var doc = $('#listDoc').val();
-		if (doc == 'RUC') {
-			$('.div_ruc').show();
-			$('.div_dni').hide();
-		} else {
-			$('.div_ruc').hide();
-			$('.div_dni').show();
+
+	$('#txtCompany').autocomplete({
+		source: "/api/companies/autocompleteAjax/",
+		minLength: 4,
+		select: function(event, ui){
+			$('#company_id').val(ui.item.id);
+			$('#lstSeller').focus();
 		}
 	});
-	$('.btnAddFeature').click(function(e){
-		var div = $(this).parent();
-		addFeature(div);
+	/*$('#txtSeller').autocomplete({
+		source: "/api/sellers/autocompleteAjax/",
+		minLength: 4,
+		select: function(event, ui){
+			$('#seller_id').val(ui.item.id);
+			$('#txtCompany').focus();
+		}
+	});*/
+
+//autocomplete para elementos agregados por javascript
+	$(document).on('focus','.txtDesign', function (e) {
+		//console.log($(this));
+		if ( !$(this).data("autocomplete") ) {
+			e.preventDefault();
+			$(this).autocomplete({
+				source: "/api/designs/autocompleteAjax/",
+				minLength: 4,
+				select: function(event, ui){
+					if(isDesignEnabled(this, ui.item.id.id)){
+						$(this).parent().parent().find('.designId').val(ui.item.id.id);
+						$(this).parent().parent().find('.unitId').val(ui.item.id.unit_id);
+						$(this).parent().parent().find('.design_id').text(ui.item.id.id);
+						$(this).parent().parent().find('.txtPrecio').val(ui.item.id.price);
+						
+						$(this).parent().parent().find('.txtCantidad').focus();
+					}
+				}
+			});
+		}
 	});
-	$('.edit').click(function(e){
-		e.preventDefault();
-		company_id = parseFloat($('#company_id').val());
-		if (company_id > 0) {
-			var url = $(this).attr('href').replace(':_ID', company_id);
-			window.location = url;
+	$(document).on('change','.txtCantidad, .txtPrecio, .txtDscto', function (e) {
+		calcTotalItem(this);
+		calcTotalOrder();
+	});
+	$('#btnAddProduct').click(function(e){
+		var items = $('#items').val();
+		if (items>0) {
+			if ($("input[name='details["+(items-1)+"][basic_design_id]']").val() == "") {
+				$("input[name='details["+(items-1)+"][txtDesign]']").focus();
+			} else{
+				renderTemplateRowProduct();
+			};
 		} else{
-			$('#txtcompany').focus();
-		}
+			renderTemplateRowProduct();
+		};
 	});
-
-	$('#company_null').click(function(){
-		if ( $('#company_null').is(':checked') ) {
-			$('#company_id').val('1');
-			$('#txtcompany').val('SIN CLIENTE');
-		} else {
-			$('#company_id').val('');
-			$('#txtcompany').val('');
-		}
-	});
-	$('#btn-new-afluencia').click(function(){
-		$('#afluencia_id').val('0');
-		$('.tipo-radio').find('input[type="radio"]').removeAttr('checked');
-		$('.formapago-radio').find('input[type="radio"]').removeAttr('checked');
-		$('#canal').val('');
-		$('#lstVersions').val('');
-		$('#lstYears').val('');
-		$('.status-checked').find('input[type="checkbox"]').removeAttr('checked');
-	});
-	$('#btn-historial-afluencia').click(function(){
-		var historial;
-		historial = 'Registro: ' + $('#registered_at2').val();
-		historial = historial + '\nCotizacion: ' + $('#quoted_at2').val();
-		historial = historial + '\nTest Drive: ' + $('#test_drive_at2').val();
-		historial = historial + '\nSeparacion: ' + $('#separated_at2').val();
-		historial = historial + '\nCancelacion: ' + $('#canceled_at2').val();
-		alert(historial);
-	});
-	$('.otros, .evento').hide();
-	if( $('#canal').val() == 'POR EVENTO' ){ $('.evento').show() }
-	if( $('#canal').val() == 'OTROS' ){ $('.otros').show() }
-	$('#canal').change(function(){
-		$('.otros, .evento').hide();
-		if( $('#canal').val() == 'POR EVENTO' ){ $('.evento').show();$('.evento[type="text"]').focus() }
-		if( $('#canal').val() == 'OTROS' ){ $('.otros').show();$('.otros[type="text"]').focus() }
-	});
-
 });
-function addFeature (div) {
-	var group = div.data('group');
-	console.log(group);
-	var html = htmlFeature(group);
-	console.log(html);
-	div.append(html);
+
+function validateItem (myElement, id) {
+	n = $(myElement).parent().parent().find(id).val();
+	n = Math.round(parseFloat(n)*100)/100;
+	if (isNaN(n)) {n=0.00};
+	$(myElement).parent().parent().find(id).val(n.toFixed(2));
+	return n;
 }
-function htmlFeature (group) {
-	var html = '';
-	var items = parseFloat($('#items').val()) + 1;
+function calcTotalItem (myElement) {
+	cantidad = validateItem(myElement,'.txtCantidad');
+	precio = validateItem(myElement,'.txtPrecio');
+	dscto = validateItem(myElement,'.txtDscto');
+	D = Math.round(cantidad * precio * dscto) / 100;
+	total = Math.round((cantidad*precio-D)*100)/100;
+	$(myElement).parent().parent().find('.txtTotal').text( total.toFixed(2) );
+}
+function calcTotalOrder () {
+	var gross_value = 0;
+	var discount = 0;
+	var subtotal = 0;
+	var total = 0;
+	var q,p,d;
+	$('#tableItems tr').each(function (index, vtr) {
+		q = parseFloat($(vtr).find('.txtCantidad').val());
+		p = parseFloat($(vtr).find('.txtPrecio').val());
+		d = parseFloat($(vtr).find('.txtDscto').val());
+		gross_value = Math.round(q*p*100)/100 + gross_value;
+		discount = Math.round(q*p*d)/100 + discount;
+	});
+	subtotal = gross_value - discount;
+	total = Math.round(subtotal * (100 + 18))/100;
+
+
+	$('#mGrossValue').text(gross_value.toFixed(2));
+	$('#mDiscount').text(discount.toFixed(2));
+	$('#mSubTotal').text(subtotal.toFixed(2));
+	$('#mTotal').text(total.toFixed(2));
+}
+function activateTemplate (id) {
+	var t = document.querySelector(id);
+	return document.importNode(t.content, true);
+}
+
+function renderTemplateRowProduct () {
+	var clone = activateTemplate("#template-row-item");
+	var items = $('#items').val();
+	clone.querySelector("[data-designid]").setAttribute("name", "details[" + items + "][basic_design_id]");
+	clone.querySelector("[data-unitid]").setAttribute("name", "details[" + items + "][unit_id]");
+	clone.querySelector("[data-design]").setAttribute("name", "details[" + items + "][txtDesign]");
+	clone.querySelector("[data-cantidad]").setAttribute("name", "details[" + items + "][quantity]");
+	clone.querySelector("[data-precio]").setAttribute("name", "details[" + items + "][price]");
+	clone.querySelector("[data-dscto]").setAttribute("name", "details[" + items + "][discount]");
+	clone.querySelector("[data-isdeleted]").setAttribute("name", "details[" + items + "][is_deleted]");
+	if (items>0) {$("input[name='details["+(items-1)+"][txtDesign]']").attr('disabled', true);};
+	
+	items = parseInt(items) + 1;
 	$('#items').val(items);
-	html = html + "<div class=\"feature\">";
-	html = html + "<input type=\"hidden\" name=\"features["+items+"][feature_group_id]\" value=\"" + group + "\" class=\"feature_group_id\">";
-	html = html + "<input type=\"text\" name=\"features["+items+"][name]\" placeholder=\"Nombre\" class=\"name\"> ";
-	html = html + "<input type=\"text\" name=\"features["+items+"][value]\" placeholder=\"Valor\" class=\"value\">";
-	html = html + "</div>";
-	return html;
+	$("#tableItems").append(clone);
+	$("input[name='details["+(items-1)+"][txtDesign]']").focus();
+}
+
+function isDesignEnabled (myElement, id) {
+	var b = true
+	$('#tableItems tr .designId').each(function (index, d) {
+		if ($(d).val() == id) {
+			alert("Este diseño ya fue registrado");
+			setTimeout(function(){ 
+				$(myElement).parent().parent().find('.txtDesign').val('');
+				$(d).parent().find('.isdeleted').attr('checked', false);
+				$(d).parent().find('.txtCantidad').focus();
+			}, 300);
+			b = false;
+		};
+	});
+	return b;
 }

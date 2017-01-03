@@ -20,7 +20,7 @@ class CreateBasicDesignsTable extends Migration {
 			$table->string('description');
 			$table->integer('sub_category_id')->unsigned();
 			$table->integer('unit_id')->unsigned();
-			$table->integer('currency_id')->unsigned();
+			$table->integer('currency_id')->unsigned()->default(1);
 			$table->integer('price')->unsigned();
 			
 			$table->foreign('sub_category_id')->references('id')->on('sub_categories');

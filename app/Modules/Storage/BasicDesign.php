@@ -24,10 +24,10 @@ class BasicDesign extends Model {
 	{
 		return $this->hasOne('App\Modules\Storage\Unit','id','unit_id');
 	}
-	public function products()
-	{
-		return $this->hasMany('App\Modules\Storage\Product');
-	}
+	// public function products()
+	// {
+	// 	return $this->hasMany('App\Modules\Storage\Product');
+	// }
 	// public function stocks()
 	// {
 	// 	return $this->hasMany('App\Modules\Storage\Stock');

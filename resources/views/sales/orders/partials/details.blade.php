@@ -17,10 +17,10 @@
 							@if(isset($model->details))
 							@foreach($model->details as $detail)
 								<tr data-id="{{ $detail->id }}">
-									{!! Form::hidden("details[$i][basic_design_id]", $detail->basic_design_id, ['class'=>'designId','data-designid'=>'']) !!}
+									{!! Form::hidden("details[$i][code_cut]", $detail->code_cut, ['class'=>'codeCut','data-codecut'=>'']) !!}
 									{!! Form::hidden("details[$i][unit_id]", $detail->unit_id, ['class'=>'unitId','data-unitid'=>'']) !!}
-									<td><span class='form-control design_id text-right' data-labelid>{{ $detail->basic_design_id }}</span></td>
-									<td>{!! Form::text("details[$i][txtDesign]", $detail->basic_design->name, ['class'=>'form-control txtDesign', 'data-design'=>'', 'required'=>'required', 'disabled']); !!}</td>
+									<td><span class='form-control code_cut text-right' data-labelid>{{ $detail->code_cut }}</span></td>
+									<td>{!! Form::text("details[$i][txtDesign]", $detail->v_product->name, ['class'=>'form-control txtDesign', 'data-design'=>'', 'required'=>'required', 'disabled']); !!}</td>
 									<td>{!! Form::text("details[$i][quantity]", $detail->quantity, ['class'=>'form-control txtCantidad text-right', 'data-cantidad'=>'']) !!}</td>
 									<td>{!! Form::text("details[$i][price]", $detail->price, ['class'=>'form-control txtPrecio text-right', 'data-precio'=>'']) !!}</td>
 									<td>{!! Form::text("details[$i][discount]", $detail->discount, ['class'=>'form-control txtDscto text-right', 'data-dscto'=>'']) !!}</td>
@@ -34,12 +34,12 @@
 						</table>
 						<template id="template-row-item">
 							<tr>
-								{!! Form::hidden('data1', null, ['class'=>'designId','data-designid'=>'']) !!}
+								{!! Form::hidden('data1', null, ['class'=>'codeCut','data-codecut'=>'']) !!}
 								{!! Form::hidden('data2', null, ['class'=>'unitId','data-unitid'=>'']) !!}
 								<div style="display:none;">
 									holaaa
 								</div>
-								<td><span class='form-control design_id text-right' data-labelid></span></td>
+								<td><span class='form-control code_cut text-right' data-labelid></span></td>
 								<td>{!! Form::text('data3', null, ['class'=>'form-control txtDesign', 'data-design'=>'', 'required'=>'required']); !!}</td>
 								<td>{!! Form::text('data4', null, ['class'=>'form-control txtCantidad text-right', 'data-cantidad'=>'']) !!}</td>
 								<td>{!! Form::text('data5', null, ['class'=>'form-control txtPrecio text-right', 'data-precio'=>'']) !!}</td>

@@ -25,6 +25,8 @@
 						<thead>
 							<tr>
 								<th class="col-sm-1">Talla</th>
+								<th class="col-sm-1">Color</th>
+								<th class="col-sm-1">Material</th>
 								<th class="col-sm-1">Cantidad</th>
 								<th class="col-sm-1">Costo</th>
 								<th class="col-sm-1">Margen(%)</th>
@@ -44,6 +46,8 @@
 					<template id="template-row-product">
 						<tr>
 							<td>{!! Form::select('data1', $sizes, null, ['class'=>'form-control', 'data-size_id'=>'', 'required'=>'required']); !!}</td>
+							<td>{!! Form::select('data6', $colors, null, ['class'=>'form-control', 'data-color_id'=>'', 'required'=>'required']); !!}</td>
+							<td>{!! Form::select('data7', $materials, null, ['class'=>'form-control', 'data-material_id'=>'', 'required'=>'required']); !!}</td>
 							<td>{!! Form::text('data5', null, ['class'=>'form-control', 'data-stock_initial'=>'', 'required'=>'required']) !!}</td>
 							<td>{!! Form::text('data2', null, ['class'=>'form-control', 'data-last_purchase'=>'']) !!}</td>
 							<td>{!! Form::text('data3', null, ['class'=>'form-control', 'data-profit_margin'=>'']) !!}</td>

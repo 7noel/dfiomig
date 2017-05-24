@@ -51,6 +51,7 @@ Route::group(['middleware'=>['auth']], function(){
 	Route::get('api/companies/autocompleteAjax', ['as' => 'companiesAutocomplete','uses' => 'Finances\CompaniesController@ajaxAutocomplete']);
 	Route::get('api/sellers/autocompleteAjax', ['as' => 'sellersAutocomplete','uses' => 'HumanResources\EmployeesController@ajaxAutocompleteSellers']);
 	Route::get('api/designs/autocompleteAjax', ['as' => 'designsAutocomplete','uses' => 'Storage\BasicDesignsController@ajaxAutocomplete']);
+	Route::get('api/vproducts/autocompleteAjax', ['as' => 'vproductsAutocomplete','uses' => 'Storage\ProductsController@ajaxAutocompleteVProducts']);
 });
 
 Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'permissions'], 'namespace'=>'Admin'], function(){
@@ -83,6 +84,8 @@ Route::group(['prefix'=>'storage', 'middleware'=>['auth', 'permissions'], 'names
 	Route::resource('basic_designs','BasicDesignsController');
 	Route::resource('size_types','SizeTypesController');
 	Route::resource('sizes','SizesController');
+	Route::resource('materials','MaterialsController');
+	Route::resource('colors','ColorsController');
 	Route::get('products_by_design/{basic_design_id}', ['as' => 'products_by_design', 'uses' => 'BasicDesignsController@getProducts']);
 	Route::post('products_generate_by_design', ['as' => 'products_generate_by_design', 'uses' => 'BasicDesignsController@generateProducts']);
 });

@@ -11,15 +11,15 @@ class OrderDetail extends Model
 	use Auditable;
 	use SoftDeletes;
 
-	protected $fillable = ['order_id', 'basic_design_id', 'unit_id', 'price', 'quantity', 'discount', 'total', 'comment'];
+	protected $fillable = ['order_id', 'code_cut', 'unit_id', 'price', 'quantity', 'discount', 'total', 'comment'];
 
 	public function order()
 	{
 		return $this->hasOne('App\Modules\Sales\Order','id','order_id');
 	}
-	public function basic_design()
+	public function v_product()
 	{
-		return $this->hasOne('App\Modules\Storage\BasicDesign','id','basic_design_id');
+		return $this->hasOne('App\Modules\Storage\VProduct','code_cut','code_cut');
 	}
 	public function unit()
 	{

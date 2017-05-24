@@ -8,6 +8,7 @@ use App\Modules\Storage\ProductRepo;
 use App\Modules\Storage\StockRepo;
 use App\Modules\Storage\Stock;
 use App\Modules\Storage\BasicDesign;
+use App\Modules\Storage\VProduct;
 
 class ProductRepo extends BaseRepo{
 
@@ -49,6 +50,10 @@ class ProductRepo extends BaseRepo{
 		//return Product::where('name','like',"%$term%")->orWhere('intern_code','like',"%$term%")->orWhere('provider_code','like',"%$term%")->orWhere('manufacturer_code','like',"%$term%")->with('stocks','currency')->get();
 		$stockRepo = new StockRepo;
 		return $stockRepo->autocomplete($term, $warehouse_id);
+	}
+	public function autocomplete_vproducts($term)
+	{
+		return VProduct::where('name','like',"%$term%")->orWhere('code_cut','like',"%$term%")->get();
 	}
 	public function ajaxGetData($warehouse_id, $product_id)
 	{

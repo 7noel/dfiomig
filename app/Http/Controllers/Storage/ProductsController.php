@@ -5,6 +5,9 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Modules\Storage\UnitRepo;
+use App\Modules\Storage\SizeRepo;
+use App\Modules\Storage\ColorRepo;
+use App\Modules\Storage\MaterialRepo;
 use App\Modules\Base\UnitTypeRepo;
 use App\Modules\Storage\CategoryRepo;
 use App\Modules\Storage\SubCategoryRepo;
@@ -21,14 +24,20 @@ class ProductsController extends Controller {
 	protected $subCategoryRepo;
 	protected $unitRepo;
 	protected $unitTypeRepo;
+	protected $sizeRepo;
+	protected $colorRepo;
+	protected $materialRepo;
 	protected $currencyRepo;
 
-	public function __construct(ProductRepo $repo, SubCategoryRepo $subCategoryRepo, CategoryRepo $categoryRepo, UnitRepo $unitRepo, UnitTypeRepo $unitTypeRepo, CurrencyRepo $currencyRepo) {
+	public function __construct(ProductRepo $repo, SubCategoryRepo $subCategoryRepo, CategoryRepo $categoryRepo, UnitRepo $unitRepo, UnitTypeRepo $unitTypeRepo, CurrencyRepo $currencyRepo, SizeRepo $sizeRepo, ColorRepo $colorRepo, MaterialRepo $materialRepo) {
 		$this->repo = $repo;
 		$this->categoryRepo = $categoryRepo;
 		$this->subCategoryRepo = $subCategoryRepo;
 		$this->unitRepo = $unitRepo;
 		$this->unitTypeRepo = $unitTypeRepo;
+		$this->sizeRepo = $sizeRepo;
+		$this->colorRepo = $colorRepo;
+		$this->materialRepo = $materialRepo;
 		$this->currencyRepo = $currencyRepo;
 	}
 
@@ -42,9 +51,12 @@ class ProductsController extends Controller {
 	{
 		$sub_categories = $this->subCategoryRepo->getListGroup('category');
 		$units = $this->unitRepo->getListGroup('unit_type');
+		$sizes = $this->sizeRepo->getListGroup('size_type');
+		$colors = $this->colorRepo->getList();
+		$materials = $this->materialRepo->getList();
 		$currencies = $this->currencyRepo->getList('symbol');
 		
-		return view('partials.create', compact('sub_categories', 'units', 'currencies'));
+		return view('partials.create', compact('sub_categories', 'units', 'currencies', 'sizes', 'colors', 'materials'));
 	}
 
 	public function store(FormProductRequest $request)
@@ -64,7 +76,10 @@ class ProductsController extends Controller {
 		$currencies = $this->currencyRepo->getList('symbol');
 		$sub_categories = $this->subCategoryRepo->getListGroup('category');
 		$units = $this->unitRepo->getListGroup('unit_type');
-		return view('partials.edit', compact('model', 'sub_categories', 'units', 'currencies'));
+		$sizes = $this->sizeRepo->getListGroup('size_type');
+		$colors = $this->colorRepo->getList();
+		$materials = $this->materialRepo->getList();
+		return view('partials.edit', compact('model', 'sub_categories', 'units', 'currencies', 'sizes', 'colors', 'materials'));
 	}
 
 	public function update($id, FormProductRequest $request)
@@ -94,6 +109,21 @@ class ProductsController extends Controller {
 				'value' => $model->name,
 				'id' => $model,
 				'label' => $model->intern_code.'  '.$model->name
+			];
+		}
+		return \Response::json($result);
+	}
+
+	public function ajaxAutocompleteVProducts()
+	{
+		$term = \Input::get('term');
+		$models = $this->repo->autocomplete_vproducts($term);
+		$result=[];
+		foreach ($models as $model) {
+			$result[]=[
+				'value' => $model->name,
+				'id' => $model,
+				'label' => $model->code_cut.'  '.$model->name
 			];
 		}
 		return \Response::json($result);

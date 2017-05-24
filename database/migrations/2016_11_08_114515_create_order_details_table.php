@@ -16,7 +16,7 @@ class CreateOrderDetailsTable extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('order_id')->unsigned();
-            $table->integer('basic_design_id')->unsigned();
+            $table->string('code_cut');
             $table->integer('unit_id')->unsigned();
             $table->decimal('price',15,2);
             $table->decimal('quantity',15,2);
@@ -25,7 +25,6 @@ class CreateOrderDetailsTable extends Migration
             $table->text('comment');
 
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('basic_design_id')->references('id')->on('basic_designs');
             $table->foreign('unit_id')->references('id')->on('units');
             $table->timestamps();
             $table->softDeletes();

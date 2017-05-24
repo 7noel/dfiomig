@@ -183,6 +183,18 @@ return array(
 			'show'   => ['panel'=>'Vizualizando Tipo de Talla:'],
 			'edit'   => ['panel'=>'Editar Tipo de Talla: ', 'update'=>'Actualizar Tipo de Talla', 'delete'=>'Eliminar Tipo de Talla']
 		],
+		'colors' => [
+			'index'  => ['panel'=>'Colors', 'create'=>'Crear Color'],
+			'create' => ['panel'=>'Nueva Color', 'create'=>'Crear Color'],
+			'show'   => ['panel'=>'Vizualizando Color:'],
+			'edit'   => ['panel'=>'Editar Color: ', 'update'=>'Actualizar Color', 'delete'=>'Eliminar Color']
+		],
+		'materials' => [
+			'index'  => ['panel'=>'Materias Prima', 'create'=>'Crear Materia Prima'],
+			'create' => ['panel'=>'Nueva Materia Prima', 'create'=>'Crear Materia Prima'],
+			'show'   => ['panel'=>'Vizualizando Materia Prima:'],
+			'edit'   => ['panel'=>'Editar Materia Prima: ', 'update'=>'Actualizar Materia Prima', 'delete'=>'Eliminar Materia Prima']
+		],
 
 	// ]
 

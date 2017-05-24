@@ -30,29 +30,27 @@ class AdminTableSeeder extends Seeder {
 
     public function run()
     {
-        User::create([
-        	'name' => 'Noel',
-        	'email' => 'noel.logan@gmail.com',
-        	'password' => '123',
-            'is_superuser' => true
-        ]);
-        User::create([
-            'name' => 'Carmen',
-            'email' => 'calba@dfiomig.com',
-            'password' => '123',
-            'is_superuser' => true
-        ]);
+        User::create(['name' => 'Noel', 'email' => 'noel.logan@gmail.com', 'password' => '123', 'is_superuser' => true]);
+        User::create(['name' => 'Hugo Caldas', 'email' => 'hcaldas@dfiomig.com', 'password' => '123',
+            'is_superuser' => true]);
+        User::create(['name' => 'Norma Alva', 'email' => 'nalva@dfiomig.com', 'password' => '123', 'is_superuser' => true]);
+        User::create(['name' => 'Rossy Cabrera', 'email' => 'ventas@dfiomig.com', 'password' => '123', 'is_superuser' => true]);
+        User::create(['name' => 'Jorge Perez', 'email' => 'admin@dfiomig.com', 'password' => '123', 'is_superuser' => true]);
+        User::create(['name' => 'Moises Soto', 'email' => 'moisesoto@dfiomig.com', 'password' => '123', 'is_superuser' => true]);
+        User::create(['name' => 'Jhony Saavedra', 'email' => 'jhonysaavedra@dfiomig.com', 'password' => '123',
+            'is_superuser' => true]);
         Role::create(['name' => 'ADMINISTRADOR DE SISTEMA']);
-        /*Role::create(['name' => 'JEFE DE ALMACEN']);
-        Role::create(['name' => 'ASISTENTE DE ALMACEN']);
-        Role::create(['name' => 'JEFE DE COMPRAS']);
-        Role::create(['name' => 'ASISTENTE DE ADV']);
-        Role::create(['name' => 'VENDEDOR']);
-        Role::create(['name' => 'JEFE DE VENTAS']);
-        Role::create(['name' => 'RECEPCIONISTA']);
         Role::create(['name' => 'GERENTE GENERAL']);
-
-        Job::create(['name' => 'JEFE DE POSTVENTA']);*/
+        Role::create(['name' => 'ADMINISTRADOR']);
+        Role::create(['name' => 'ASISTENTE ADMINISTRATIVO']);
+        Role::create(['name' => 'MARKETING']);
+        Role::create(['name' => 'VENDEDOR']);
+        //Role::create(['name' => 'JEFE DE ALMACEN']);
+        //Role::create(['name' => 'ASISTENTE DE ALMACEN']);
+        //Role::create(['name' => 'JEFE DE COMPRAS']);
+        //Role::create(['name' => 'ASISTENTE DE ADV']);
+        //Role::create(['name' => 'JEFE DE VENTAS']);
+        //Role::create(['name' => 'RECEPCIONISTA']);
 
         IdType::create(['name' => 'REGISTRO UNICO DE CONTRIBUYENTE', 'symbol' => 'RUC']);
         IdType::create(['name' => 'DOCUMENTO NACIONAL DE IDENTIDAD', 'symbol' => 'DNI']);
@@ -61,14 +59,18 @@ class AdminTableSeeder extends Seeder {
 
         Job::create(['name' => 'ANALISTA DE SISTEMAS']);
         Job::create(['name' => 'GERENTE GENERAL']);
-        Job::create(['name' => 'DIRECTIVA']);
-        Job::create(['name' => 'GERENTE ADMINISTRATIVO']);
-        Job::create(['name' => 'ASISTENTE DE VENTAS']);
-        Job::create(['name' => 'ALMACENERO']);
-        Job::create(['name' => 'PATRONISTA']);
+        Job::create(['name' => 'ADMINISTRADOR']);
+        Job::create(['name' => 'ASISTENTE ADMINISTRATIVO']);
+        Job::create(['name' => 'MARKETING']);
         Job::create(['name' => 'VENDEDOR']);
 
-        Employee::create(['name' => 'NOEL', 'paternal_surname'=>'HUILLCA', 'maternal_surname'=>'HUAMANI', 'full_name'=>'HUILLCA HUAMANI NOEL', 'id_type_id'=>'2', 'doc'=>'44243484', 'job_id'=>'2', 'gender'=>'0', 'address'=>'JR. LAS GROSELLAS 910', 'ubigeo_id'=>'1306']);
+        Employee::create(['name' => 'NOEL', 'paternal_surname'=>'HUILLCA', 'maternal_surname'=>'HUAMANI', 'full_name'=>'HUILLCA HUAMANI NOEL', 'id_type_id'=>'2', 'doc'=>'44243484', 'job_id'=>'1', 'gender'=>'0', 'address'=>'JR. LAS GROSELLAS 910', 'ubigeo_id'=>'1306', 'user_id'=>'1']);
+        Employee::create(['name' => 'HUGO DAVID', 'paternal_surname'=>'CALDAS', 'maternal_surname'=>'VIA', 'full_name'=>'CALDAS VIA HUGO DAVID', 'id_type_id'=>'2', 'doc'=>'10426606', 'job_id'=>'2', 'gender'=>'0', 'address'=>'CAL.JUAN PITCHER MZA. Y LOTE. 1 URB. EL PACIFICO 2DA ETAPA', 'ubigeo_id'=>'1309', 'user_id'=>'2']);
+        Employee::create(['name' => 'NORMA BERTHA', 'paternal_surname'=>'ALVA', 'maternal_surname'=>'LUIS', 'full_name'=>'ALVA LUIS NORMA BERTHA', 'id_type_id'=>'2', 'doc'=>'09909418', 'job_id'=>'3', 'gender'=>'0', 'address'=>'CAL.JUAN PITCHER MZA. Y LOTE. 1 URB. EL PACIFICO 2DA ETAPA', 'ubigeo_id'=>'1309', 'user_id'=>'3']);
+        Employee::create(['name' => 'ROSSY PILAR', 'paternal_surname'=>'CABRERA', 'maternal_surname'=>'ROJAS', 'full_name'=>'CABRERA ROJAS ROSSY PILAR', 'id_type_id'=>'2', 'doc'=>'40302893', 'job_id'=>'4', 'gender'=>'0', 'address'=>'DIRECCION', 'ubigeo_id'=>'1309', 'user_id'=>'4']);
+        Employee::create(['name' => 'JORGE', 'paternal_surname'=>'PEREZ', 'maternal_surname'=>'PANDURO', 'full_name'=>'PEREZ PANDURO JORGE', 'id_type_id'=>'2', 'doc'=>'10130732', 'job_id'=>'5', 'gender'=>'0', 'address'=>'DIRECCION', 'ubigeo_id'=>'1309', 'user_id'=>'5']);
+        Employee::create(['name' => 'MOISES', 'paternal_surname'=>'SOTO', 'maternal_surname'=>'RAMIREZ', 'full_name'=>'SOTO RAMIREZ MOISES', 'id_type_id'=>'2', 'doc'=>'80443146', 'job_id'=>'6', 'gender'=>'0', 'address'=>'DIRECCION', 'ubigeo_id'=>'1309', 'user_id'=>'6']);
+        Employee::create(['name' => 'JHONY ABEL', 'paternal_surname'=>'SAAVEDRA', 'maternal_surname'=>'ENCISO', 'full_name'=>'SAAVEDRA ENCISO, JHONY ABEL', 'id_type_id'=>'2', 'doc'=>'07625951', 'job_id'=>'6', 'gender'=>'0', 'address'=>'DIRECCION', 'ubigeo_id'=>'1309', 'user_id'=>'7']);
         //Employee::create(['name' => '', 'paternal_surname'=>'', 'maternal_surname'=>'', 'full_name'=>'', 'id_type_id'=>'2', 'doc'=>'', 'job_id'=>'', 'gender'=>'', 'address'=>'', 'ubigeo_id'=>''])
         Company::create(['company_name'=>'HUILLCA HUAMANI NOEL', 'id_type_id'=>'2', 'doc'=>'44243484', 'address'=>'JR. LAS GROSELLAS 910', 'ubigeo_id'=>'1306']);
 

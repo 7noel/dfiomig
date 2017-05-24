@@ -63,6 +63,8 @@ class MenuController extends Controller
                 ['name' => 'Unidades', 'route' => 'units.index' ],
                 ['name' => 'Tipos de Talla', 'route' => 'size_types.index' ],
                 ['name' => 'Tallas', 'route' => 'sizes.index' ],
+                ['name' => 'Colores', 'route' => 'colors.index' ],
+                ['name' => 'Materia Prima', 'route' => 'materials.index' ],
             ],
             'Recursos Humanos'=>[
                 ['name' => 'Empleados', 'route' => 'employees.index' ],

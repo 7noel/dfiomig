@@ -9,6 +9,8 @@ use App\Modules\Storage\SubCategoryRepo;
 use App\Modules\Storage\ProductRepo;
 use App\Modules\Storage\BasicDesignRepo;
 use App\Modules\Storage\SizeRepo;
+use App\Modules\Storage\ColorRepo;
+use App\Modules\Storage\MaterialRepo;
 use App\Modules\Base\CurrencyRepo;
 
 use App\Modules\Storage\Stock;
@@ -21,14 +23,18 @@ class BasicDesignsController extends Controller {
 	protected $unitRepo;
 	protected $currencyRepo;
 	protected $sizeRepo;
+	protected $colorRepo;
+	protected $materialRepo;
 
-	public function __construct(BasicDesignRepo $repo, SubCategoryRepo $subCategoryRepo, ProductRepo $productRepo, UnitRepo $unitRepo, CurrencyRepo $currencyRepo, SizeRepo $sizeRepo) {
+	public function __construct(BasicDesignRepo $repo, SubCategoryRepo $subCategoryRepo, ProductRepo $productRepo, UnitRepo $unitRepo, CurrencyRepo $currencyRepo, SizeRepo $sizeRepo, ColorRepo $colorRepo, MaterialRepo $materialRepo) {
 		$this->repo = $repo;
 		$this->productRepo = $productRepo;
 		$this->subCategoryRepo = $subCategoryRepo;
 		$this->unitRepo = $unitRepo;
 		$this->currencyRepo = $currencyRepo;
 		$this->sizeRepo = $sizeRepo;
+		$this->colorRepo = $colorRepo;
+		$this->materialRepo = $materialRepo;
 	}
 
 	public function index()
@@ -102,7 +108,9 @@ class BasicDesignsController extends Controller {
 	{
 		$model = $this->repo->findOrFail($basic_design_id);
 		$sizes = $this->sizeRepo->getListGroup('size_type', 'symbol');
-		return view('storage.basic_designs.products', compact('model', 'sizes'));
+		$colors = $this->colorRepo->getList();
+		$materials = $this->materialRepo->getList();
+		return view('storage.basic_designs.products', compact('model', 'sizes', 'colors', 'materials'));
 	}
 	public function generateProducts()
 	{

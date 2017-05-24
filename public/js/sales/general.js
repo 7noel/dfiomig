@@ -23,15 +23,14 @@ $(document).ready(function(){
 		if ( !$(this).data("autocomplete") ) {
 			e.preventDefault();
 			$(this).autocomplete({
-				source: "/api/designs/autocompleteAjax/",
+				source: "/api/vproducts/autocompleteAjax",
 				minLength: 4,
 				select: function(event, ui){
 					if(isDesignEnabled(this, ui.item.id.id)){
-						$(this).parent().parent().find('.designId').val(ui.item.id.id);
+						$(this).parent().parent().find('.codeCut').val(ui.item.id.code_cut);
 						$(this).parent().parent().find('.unitId').val(ui.item.id.unit_id);
-						$(this).parent().parent().find('.design_id').text(ui.item.id.id);
 						$(this).parent().parent().find('.txtPrecio').val(ui.item.id.price);
-						
+						$(this).parent().parent().find('.code_cut').text(ui.item.id.code_cut);
 						$(this).parent().parent().find('.txtCantidad').focus();
 					}
 				}
@@ -45,7 +44,7 @@ $(document).ready(function(){
 	$('#btnAddProduct').click(function(e){
 		var items = $('#items').val();
 		if (items>0) {
-			if ($("input[name='details["+(items-1)+"][basic_design_id]']").val() == "") {
+			if ($("input[name='details["+(items-1)+"][code_cut]']").val() == "") {
 				$("input[name='details["+(items-1)+"][txtDesign]']").focus();
 			} else{
 				renderTemplateRowProduct();
@@ -101,7 +100,7 @@ function activateTemplate (id) {
 function renderTemplateRowProduct () {
 	var clone = activateTemplate("#template-row-item");
 	var items = $('#items').val();
-	clone.querySelector("[data-designid]").setAttribute("name", "details[" + items + "][basic_design_id]");
+	clone.querySelector("[data-codecut]").setAttribute("name", "details[" + items + "][code_cut]");
 	clone.querySelector("[data-unitid]").setAttribute("name", "details[" + items + "][unit_id]");
 	clone.querySelector("[data-design]").setAttribute("name", "details[" + items + "][txtDesign]");
 	clone.querySelector("[data-cantidad]").setAttribute("name", "details[" + items + "][quantity]");
@@ -118,7 +117,7 @@ function renderTemplateRowProduct () {
 
 function isDesignEnabled (myElement, id) {
 	var b = true
-	$('#tableItems tr .designId').each(function (index, d) {
+	$('#tableItems tr .codeCut').each(function (index, d) {
 		if ($(d).val() == id) {
 			alert("Este diseño ya fue registrado");
 			setTimeout(function(){ 

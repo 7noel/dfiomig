@@ -9,7 +9,7 @@
 						</div>
 						{!! Form::label('currency_id','Moneda', ['class'=>'col-sm-1 control-label']) !!}
 						<div class="col-sm-2">
-						{!! Form::select('currency_id', $currencies, ((isset($model->currency_id)) ? $model->currency_id : null),['class'=>'form-control', 'id'=>'lstCurrency']); !!}
+						{!! Form::select('currency_id', $currencies, ((isset($model->currency_id)) ? $model->currency_id : 1),['class'=>'form-control', 'id'=>'lstCurrency']); !!}
 						</div>
 					</div>
 					<div class="form-group  form-group-sm">

@@ -29,6 +29,8 @@ function renderTemplateRowProduct () {
 	var clone = activateTemplate("#template-row-product");
 	var items = $('#items').val();
 	clone.querySelector("[data-size_id]").setAttribute("name", "products[" + items + "][size_id]");
+	clone.querySelector("[data-color_id]").setAttribute("name", "products[" + items + "][color_id]");
+	clone.querySelector("[data-material_id]").setAttribute("name", "products[" + items + "][material_id]");
 	clone.querySelector("[data-stock_initial]").setAttribute("name", "products[" + items + "][stock_initial]");
 	clone.querySelector("[data-last_purchase]").setAttribute("name", "products[" + items + "][last_purchase]");
 	clone.querySelector("[data-profit_margin]").setAttribute("name", "products[" + items + "][profit_margin]");

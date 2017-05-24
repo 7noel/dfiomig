@@ -23,7 +23,9 @@ class CreateProductsTable extends Migration {
 			$table->integer('sub_category_id')->unsigned();
 			$table->integer('unit_id')->unsigned();
 			$table->integer('currency_id')->unsigned();
-			$table->integer('size_id');
+			$table->integer('size_id')->unsigned();
+			$table->integer('color_id')->unsigned();
+			$table->integer('material_id')->unsigned();
 			$table->string('code_cut');
 			$table->integer('basic_design_id');
 			$table->decimal('last_purchase', 15, 4);

@@ -45,7 +45,7 @@
 								<td>{!! Form::text('data5', null, ['class'=>'form-control txtPrecio text-right', 'data-precio'=>'']) !!}</td>
 								<td>{!! Form::text('data6', null, ['class'=>'form-control txtDscto text-right', 'data-dscto'=>'']) !!}</td>
 								<td> <span class='form-control txtTotal text-right' data-total></span> </td>
-								<td class="text-center"><div class="checkbox"><label><input type="checkbox" name="data7" data-isdeleted class="isdeleted"> Eliminar</label></div></td>
+								<td class="text-center form-inline"><a href="#" class="btn-delete btn btn-info btn-xs"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span></a>&nbsp&nbsp<div class="checkbox"><label><input type="checkbox" name="data7" data-isdeleted class="isdeleted"> Eliminar</label></div></td>
 							</tr>
 						</template>
 						{!! Form::hidden('items', $i, ['id'=>'items']) !!}
@@ -76,13 +76,46 @@
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content row">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Detalle del producto</h4>
       </div>
       <div class="modal-body">
-        ...
+      	<div class="col-sm-4 form-group-sm">
+	        <table class="table table-condensed">
+	        	<thead>
+		        	<tr>
+		        		<th class="col-sm-2">Talla</th>
+		        		<th class="col-sm-2">Cantidad</th>
+		        	</tr>
+	        	</thead>
+	        	<tbody>
+	        		<tr>
+	        			<td>ADULTO S</td>
+	        			<td><input class="form-control" type="number" name="" value="4"></td>
+	        		</tr>
+	        		<tr>
+	        			<td>ADULTO M</td>
+	        			<td><input class="form-control" type="number" name="" value="4"></td>
+	        		</tr>
+	        		<tr>
+	        			<td>ADULTO L</td>
+	        			<td><input class="form-control" type="number" name="" value="4"></td>
+	        		</tr>
+	        		<tr>
+	        			<td>ADULTO XL</td>
+	        			<td><input class="form-control" type="number" name="" value="4"></td>
+	        		</tr>
+	        	</tbody>
+	        </table>
+		</div>
+			<label for="obs">Observaciones</label>
+			<div>
+				<textarea id="obs" name="" id="" cols="50" rows="5"></textarea>
+			</div>
+    	<div>
+    	</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

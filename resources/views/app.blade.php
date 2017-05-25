@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{ config('app.name', 'Laravel') }}</title>
-	{!! Html::style('css/app.css') !!}
+	{!! Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') !!}
 	{!! Html::style('css/autocomplete.css') !!}
 	{!! Html::style('css/others.css') !!}
 	{!! Html::style('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css') !!}
@@ -107,7 +107,7 @@
 	<!-- Scripts -->
 	{!! Html::script('//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js') !!}
 	{!! Html::script('//code.jquery.com/ui/1.11.4/jquery-ui.js') !!}
-	{!! Html::script('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js') !!}
+	{!! Html::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') !!}
 	{!! Html::script('js/admin.js') !!}
 	{!! Html::script('js/delete.js') !!}
 

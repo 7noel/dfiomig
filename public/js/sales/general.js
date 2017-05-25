@@ -26,7 +26,7 @@ $(document).ready(function(){
 				source: "/api/vproducts/autocompleteAjax",
 				minLength: 4,
 				select: function(event, ui){
-					if(isDesignEnabled(this, ui.item.id.id)){
+					if(isDesignEnabled(this, ui.item.id.code_cut)){
 						$(this).parent().parent().find('.codeCut').val(ui.item.id.code_cut);
 						$(this).parent().parent().find('.unitId').val(ui.item.id.unit_id);
 						$(this).parent().parent().find('.txtPrecio').val(ui.item.id.price);
@@ -115,10 +115,10 @@ function renderTemplateRowProduct () {
 	$("input[name='details["+(items-1)+"][txtDesign]']").focus();
 }
 
-function isDesignEnabled (myElement, id) {
+function isDesignEnabled (myElement, code_cut) {
 	var b = true
 	$('#tableItems tr .codeCut').each(function (index, d) {
-		if ($(d).val() == id) {
+		if ($(d).val() == code_cut) {
 			alert("Este diseño ya fue registrado");
 			setTimeout(function(){ 
 				$(myElement).parent().parent().find('.txtDesign').val('');

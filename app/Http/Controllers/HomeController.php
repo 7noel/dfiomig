@@ -31,14 +31,15 @@ class HomeController extends Controller
     public function beta()
     {
         $model = new MoveRepo;
+        $p=1;
         //dd($model);
-        $data['id'] = 15;
+        $data['id'] = 25;
         $data['document'] = 'FACTURA';
         $data['code_document'] = '01';
         $data['series'] = '01';
-        $data['number'] = '4700';
-        $data['type_op'] = 'OUT';
-        $data['input'] = 30;
+        $data['number'] = '4600';
+        $data['type_op'] = 'IN';
+        $data['input'] = 10;
         $data['output'] = 0;
         $data['stock'] = 60;
         $data['stock_id'] = 1;
@@ -51,21 +52,25 @@ class HomeController extends Controller
         $data['document_id'] = 1;
 
         for ($i=0; $i < 1; $i++) {
-            if ($data['type_op'] == 'IN') {
-                $data['type_op'] = 'OUT';
-                $data['input'] = 0;
-                $data['output'] = 30 + ($i*10);
-                $data['change_value'] = false;
-            } else {
-                $data['type_op'] = 'IN';
-                $data['output'] = 0;
-                $data['input'] = 30 + ($i*10);
-                $data['change_value'] = true;
-            }
             $data['number'] = $data['number'] + 1;
             $data['value'] = $data['value'] + ($i*10);
+            if ($p) {
+                if ($data['type_op'] == 'IN') {
+                    $data['type_op'] = 'OUT';
+                    $data['input'] = 0;
+                    $data['output'] = 40 + ($i*10);
+                    $data['change_value'] = false;
+                } else {
+                    $data['type_op'] = 'IN';
+                    $data['output'] = 0;
+                    $data['input'] = 40 + ($i*10);
+                    $data['change_value'] = true;
+                }
+            }
+            
             //$model->save($data);
             $model->save($data, $data['id']);
         }
+        return $model;
     }
 }

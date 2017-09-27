@@ -18,6 +18,7 @@ function loadWarehouses(){
 	$.get(page, function(data){
 		$('#listWarehouses').empty();
 		$('#listWarehouses').append("<option value=''> </option>");
+		console.log(data);
 		$.each(data, function (index, Obj) {
 			$('#listWarehouses').append("<option value='"+Obj.id+"'>"+Obj.id+"</option>");
 			$("#tableStocks tr").find('td:eq(0)').each(function () {

@@ -23,7 +23,7 @@ class CreateStocksTable extends Migration {
 			$table->decimal('stock_max',15,4);
 			$table->decimal('stock',15,4);
 			$table->integer('currency_id')->unsigned()->default(1);
-			$table->decimal('avarage_value');
+			$table->decimal('avarage_value',15,4);
 
 			$table->foreign('warehouse_id')->references('id')->on('warehouses');
 			$table->foreign('product_id')->references('id')->on('products');

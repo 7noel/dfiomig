@@ -26,6 +26,7 @@ class CreateMovesTable extends Migration
             $table->integer('stock_id')->unsigned();
             $table->integer('unit_id')->unsigned();
             $table->decimal('value', 15,4);
+            $table->boolean('change_value')->default(false);
             $table->decimal('avarage_value_before', 15,4);
             $table->decimal('avarage_value_after', 15,4);
             $table->string('document_model', 100);

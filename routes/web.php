@@ -15,6 +15,7 @@
 //     return view('welcome');
 // });
 Route::get('/', 'HomeController@index');
+Route::get('beta', 'HomeController@beta');
 // Auth::routes();
 Route::group(['middleware' => ['web']], function() {
 

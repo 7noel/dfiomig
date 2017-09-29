@@ -31,7 +31,7 @@ $(document).ready(function(){
 });
 
 function getDataPadron (ruc) {
-	var url = "http://noelhh.dns.net/sunat/ruc/" + ruc;
+	var url = "http://noelhh.ddns.net/sunat/ruc/" + ruc;
 	$.get(url, function(data){
 		if (data) {
 			$('#company_name').val(data.razon_social);

@@ -6,6 +6,7 @@ use App\Modules\Base\BaseRepo;
 use App\Modules\Storage\Product;
 use App\Modules\Storage\ProductRepo;
 use App\Modules\Storage\StockRepo;
+use App\Modules\Storage\MoveRepo;
 use App\Modules\Storage\Stock;
 use App\Modules\Storage\BasicDesign;
 use App\Modules\Storage\VProduct;
@@ -39,9 +40,12 @@ class ProductRepo extends BaseRepo{
 	public function save($data, $id=0)
 	{
 		$model = parent::save($data, $id);
+		dd($data);
 		if (isset($data['stocks'])) {
-			$stockRepo= new StockRepo;
-			$stockRepo->syncMany($data['stocks'], ['key'=>'product_id', 'value'=>$model->id], 'warehouse_id');
+			//$stockRepo= new StockRepo;
+			//$stockRepo->syncMany($data['stocks'], ['key'=>'product_id', 'value'=>$model->id], 'warehouse_id');
+			$moveRepo = new MoveRepo;
+			$moveRepo->syncMany($data['stocks'], ['key'=>'stock_id', 'value'=>2], 'warehouse_id');
 		}
 		return $model;
 	}

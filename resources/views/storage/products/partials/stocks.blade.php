@@ -13,7 +13,10 @@
 							<td>{{ $stock->warehouse_id }} </td>
 							<td>{{ $stock->stock }} </td>
 							<td>
-								<a href="#" class="btn-delete-stock btn btn-danger btn-xs">Eliminar</a><input type="hidden" name="stocks[{{ $key }}][warehouse_id]" value="{{$stock->warehouse_id }}"><input type="hidden" name="stocks[{{ $key }}][stock]" value="{{ $stock->stock }}">
+								<a href="#" class="btn-delete-stock btn btn-danger btn-xs">Eliminar</a>
+								<input type="hidden" name="stocks[{{ $key }}][warehouse_id]" value="{{$stock->warehouse_id }}">
+								<input type="hidden" name="stocks[{{ $key }}][stock]" value="{{ $stock->stock }}">
+								<input type="hidden" name="stocks[{{ $key }}][id]" value="{{ $stock->id }}">
 							</td>
 						</tr>
 						@endforeach

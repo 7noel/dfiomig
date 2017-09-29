@@ -18,6 +18,9 @@ abstract class BaseRepo{
 	public function findOrFail($id){
 		return $this->model->findOrFail($id);
 	}
+	public function firstOrCreate($atributes, $values){
+		return $this->model->firstOrCreate($atributes, $values);
+	}
 	public function all()
 	{
 		return $this->model->all();
